@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './components/Pages/Login/Login';
+import Checkout from './components/Pages/Checkout/Checkout';
 
 import './styles/main.css';
 
 const App = () => (
-  <Login />
+  <Checkout />
 );
 
 export default App;

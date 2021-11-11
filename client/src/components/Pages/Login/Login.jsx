@@ -12,7 +12,7 @@ const Login = () => (
     gap={4}
   >
     <GridItem display="flex" rowSpan={1} colSpan={2} justifyContent="center">
-      <Logo />
+      <Logo color="secondary" />
     </GridItem>
     <GridItem rowSpan={11} colSpan={1}>
       <Image src="https://cdn.dribbble.com/users/2441144/screenshots/6176533/2.rolnictwo_dribbble.gif" />
