@@ -1,0 +1,9 @@
+.container-login {
+  background-color: var(--secondary-color);
+  height: 100vh;
+}
+
+.login__logo {
+  font-size: xx-large;
+  font-weight: 600;
+}

@@ -1,0 +1,21 @@
+@import url('./fonts/fonts.css');
+@import url('./theme/logo.css');
+@import url('./theme/login.css');
+
+:root {
+  --primary-color: #e9972d;
+  --secondary-color: #14371f;
+  --tertiary-color: #c4501b;
+  --quaternary-color: #4a7140;
+  --black-color: #110f00;
+  --white-color: #fafafa;
+}
+
+* {
+  font-family: 'Open Sans';
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
