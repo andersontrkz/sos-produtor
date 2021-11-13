@@ -1,12 +1,18 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
+import { Flex, Button } from '@chakra-ui/react';
 
 import Logo from '../Logo/Logo';
 
-const Header = () => (
+const Header = ({ onOpen }) => (
   <Flex bg="var(--secondary-color)" justify="center" alignItems="center">
     <Logo color="white" />
+    <Button position="absolute" right="20" bg="var(--primary-color)" color="white" onClick={onOpen}>Meu Carrinho (6)</Button>
   </Flex>
 );
+
+Header.propTypes = {
+  onOpen: PropTypes.oneOfType([]).isRequired,
+};
 
 export default Header;

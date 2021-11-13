@@ -1,14 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../Header/Header';
+import { useDisclosure } from '@chakra-ui/react';
 
-const Layout = ({ children }) => (
-  <>
-    <Header />
-    {children}
-  </>
-);
+import Header from '../Header/Header';
+import Sidebar from './Sidebar';
+
+const Layout = ({ children }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <>
+      <Header onOpen={onOpen} />
+      {children}
+      <Sidebar isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+    </>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([

@@ -65,7 +65,7 @@ const products = [{
 }];
 
 const Cart = () => (
-  <Grid templateColumns="repeat(12, 1fr)" gap={1} boxShadow="xl" p={8} overflowY="auto" maxH="md">
+  <Grid templateColumns="repeat(12, 1fr)" gap={1} overflowY="auto" maxH="l">
     {products.map((product) => <CartItem product={product} />)}
   </Grid>
 );
