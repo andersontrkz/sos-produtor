@@ -1,10 +1,10 @@
 import React from 'react';
-import Producer from './components/Pages/Producer/Producer';
+import Home from './components/Pages/Home/Home';
 
 import './styles/main.css';
 
 const App = () => (
-  <Producer />
+  <Home />
 );
 
 export default App;
