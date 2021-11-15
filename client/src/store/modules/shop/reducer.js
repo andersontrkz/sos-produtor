@@ -1,3 +1,7 @@
+import produce from 'immer';
+
+import types from './types';
+
 const INITIAL_STATE = {
   customer: {},
 };
@@ -5,9 +9,11 @@ const INITIAL_STATE = {
 // eslint-disable-next-line default-param-last
 const shop = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'SET_CUSTOMER': {
-      // SET
-      return action;
+    case types.SET_CUSTOMER: {
+      return produce(state, (draft) => {
+        // eslint-disable-next-line no-param-reassign
+        draft.customer = action.customer;
+      });
     }
 
     default:
