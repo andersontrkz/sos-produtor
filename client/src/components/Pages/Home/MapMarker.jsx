@@ -8,15 +8,16 @@ import MarkerIcon from '../../../assets/icons/marker.png';
 const MapMarker = ({ producer: { image } }) => (
   <Flex w="120px" h="120px">
     <Image
-      mt="15px"
-      ml="30px"
+      mt="8px"
+      ml="27px"
       position="absolute"
-      w="59px"
-      h="56px"
+      w="66px"
+      h="66px"
       borderRadius="50%"
       src={image}
+      objectFit="cover"
     />
-    <Image src={MarkerIcon} w="100%" h="100%" />
+    <Image src={MarkerIcon} w="100%" h="100%" objectFit="cover" />
   </Flex>
 );
 

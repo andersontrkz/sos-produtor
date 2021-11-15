@@ -5,6 +5,8 @@ import types from './types';
 const INITIAL_STATE = {
   customer: {},
   producers: [],
+  selectedProducerMarker: null,
+  mapCenter: { lat: -23.561684, lng: -46.625378 },
 };
 
 // eslint-disable-next-line default-param-last

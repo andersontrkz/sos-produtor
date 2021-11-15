@@ -20,13 +20,15 @@ const Home = () => {
   return (
     <Layout>
       <Flex justifyContent="center">
-        <Text fontSize={18} mt={2}>Produtores próximos de você (5)</Text>
+        <Text fontSize={18} mt={2}>
+          { `Produtores próximos de você (${producers.length})` }
+        </Text>
       </Flex>
       <Flex justifyContent="center" maxH="20vh">
         <ProducersList producers={producers} />
       </Flex>
       <Flex h="100%">
-        <Map />
+        <Map producers={producers} />
       </Flex>
     </Layout>
   );
