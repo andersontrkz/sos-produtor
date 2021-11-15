@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import MapMarker from './MapMarker';
 
 const Map = ({ producers }) => {
-  const { mapCenter } = useSelector();
+  const { mapCenter } = useSelector((state) => state.shop);
 
   return (
     <GoogleMapReact

@@ -5,7 +5,7 @@ import types from './types';
 const INITIAL_STATE = {
   customer: {},
   producers: [],
-  selectedProducerMarker: null,
+  selectedProducerMapMarker: null,
   mapCenter: { lat: -23.561684, lng: -46.625378 },
 };
 
@@ -23,6 +23,20 @@ const shop = (state = INITIAL_STATE, action) => {
       return produce(state, (draft) => {
         // eslint-disable-next-line no-param-reassign
         draft.producers = action.producers;
+      });
+    }
+
+    case types.SET_MAP_MARKER_SELECTED: {
+      return produce(state, (draft) => {
+        // eslint-disable-next-line no-param-reassign
+        draft.selectedProducerMapMarker = action.producer;
+      });
+    }
+
+    case types.SET_MAP_CENTER: {
+      return produce(state, (draft) => {
+        // eslint-disable-next-line no-param-reassign
+        draft.mapCenter = action.location;
       });
     }
 
