@@ -4,10 +4,11 @@ const { Schema } = mongoose;
 
 const producer = new Schema({
   name: String,
-  rate: String,
   image: String,
+  cost: String,
+  rate: String,
   location: Object,
-  category: String,
+  resources: Object,
   seller_id: String,
 });
 
