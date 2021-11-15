@@ -9,9 +9,9 @@ const ProducerCard = ({
     id, name, price, rate, range, image,
   },
 }) => (
-  <Flex key={id} mx={4} my={2} boxShadow="base" py={2} px={4} borderRadius="6px">
+  <Flex key={id} mx={4} my={2} boxShadow="md" borderRadius="8px" bg="#FFF">
     <Flex minW="100px" maxW="100px" minH="100px" maxH="100px" p={1}>
-      <Image src={image} borderRadius="6px" />
+      <Image p={2} src={image} borderRadius="50%" objectFit="cover" />
     </Flex>
     <Flex minW="160px" maxW="160px" p={2} flexDir="column" justifyContent="space-between">
       <Text fontSize="sm" fontWeight="900">{name}</Text>

@@ -7,7 +7,7 @@ import {
 import ProducerCard from './ProducerCard';
 
 const ProducersList = ({ producers }) => (
-  <Flex overflowX="auto">
+  <Flex overflowX="auto" mt={1}>
     {producers.map((producer) => <ProducerCard producer={producer} />)}
   </Flex>
 );

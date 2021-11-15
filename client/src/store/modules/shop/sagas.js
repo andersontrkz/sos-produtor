@@ -9,7 +9,7 @@ export function* requestProducers() {
   const request = yield call(api.get, '/producer');
   const response = request.data;
 
-  yield put(setProducersAction(response.producers));
+  yield put(setProducersAction(response));
 }
 
 export default all([takeLatest(types.REQUEST_PRODUCERS, requestProducers)]);
