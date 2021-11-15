@@ -26,10 +26,11 @@ const shop = (state = INITIAL_STATE, action) => {
       });
     }
 
-    case types.SET_MAP_MARKER_SELECTED: {
+    case types.SET_SELECTED_PRODUCER_MAP_MARKER: {
+      console.log(action);
       return produce(state, (draft) => {
         // eslint-disable-next-line no-param-reassign
-        draft.selectedProducerMapMarker = action.producer;
+        draft.selectedProducerMapMarker = action.id;
       });
     }
 
