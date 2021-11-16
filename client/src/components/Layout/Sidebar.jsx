@@ -29,12 +29,15 @@ const Sidebar = ({ isOpen, onClose }) => {
           <Cart />
         </DrawerBody>
 
-        <DrawerFooter display="flex" justifyContent="space-between">
+        <DrawerFooter fontWeight={600} display="flex" justifyContent="space-between">
           <Text variant="outline" mr={3} onClick={onClose}>
-            {`Total R$ ${totalCartPrice.toFixed(2)}`}
+            TOTAL
           </Text>
-          <Button bg="var(--primary-color)">Finalizar Compra</Button>
+          <Text variant="outline" mr={3} onClick={onClose}>
+            {`R$ ${totalCartPrice.toFixed(2)}`}
+          </Text>
         </DrawerFooter>
+        <Button w="100%" borderRadius="none" size="lg" colorScheme="whatsapp">Finalizar Compra</Button>
       </DrawerContent>
     </Drawer>
   );
