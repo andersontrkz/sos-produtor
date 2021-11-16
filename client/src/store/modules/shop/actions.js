@@ -15,3 +15,6 @@ export const setMapCenterAction = (location) => ({ type: types.SET_MAP_CENTER, l
 export const requestProducerAction = (id) => ({ type: types.REQUEST_PRODUCER, id });
 
 export const setProducerAction = (producer) => ({ type: types.SET_PRODUCER, producer });
+
+export const handleProductCartAction = (product, quantity) => (
+  { type: types.HANDLE_PRODUCT_CART, product, quantity });

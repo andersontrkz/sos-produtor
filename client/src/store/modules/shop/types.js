@@ -6,6 +6,7 @@ const types = {
   SET_MAP_CENTER: '@shop/SET_MAP_CENTER',
   REQUEST_PRODUCER: '@shop/REQUEST_PRODUCER',
   SET_PRODUCER: '@shop/SET_PRODUCER',
+  HANDLE_PRODUCT_CART: '@shop/HANDLE_PRODUCT_CART',
 };
 
 export default types;

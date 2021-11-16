@@ -8,6 +8,61 @@ const INITIAL_STATE = {
   selectedProducerMapMarker: null,
   mapCenter: { lat: -23.561684, lng: -46.625378 },
   producer: {},
+  cart: [],
+  totalCartQuantity: 0,
+  totalCartPrice: 0,
+};
+
+const changeProductCartQuantity = (id, quantity, cart) => cart.map((product) => {
+  // eslint-disable-next-line no-underscore-dangle
+  if (product._id === id) return { ...product, quantity };
+  return product;
+});
+
+const addProductToCart = (newProduct, quantity, cart) => (
+  [...cart, { ...newProduct, quantity }]);
+
+const deleteProductFromCart = (id, cart) => {
+  // eslint-disable-next-line no-underscore-dangle
+  const newCart = cart.filter((product) => product._id !== id);
+  return newCart;
+};
+
+const handleProductCart = (newProduct, quantity, cart) => {
+  const { _id: id } = newProduct;
+  // eslint-disable-next-line no-underscore-dangle
+  const productExistsOnCart = cart.find((product) => product._id === id);
+
+  // eslint-disable-next-line default-case
+  switch (quantity) {
+    case 1:
+      if (productExistsOnCart) {
+        return changeProductCartQuantity(id, productExistsOnCart.quantity + 1, cart);
+      }
+
+      return addProductToCart(newProduct, 1, cart);
+
+    case -1:
+      if (productExistsOnCart) {
+        if (productExistsOnCart.quantity > 1) {
+          console.log('DIMINUI');
+          return changeProductCartQuantity(id, productExistsOnCart.quantity - 1, cart);
+        }
+        console.log('DELETA');
+        return deleteProductFromCart(id, cart);
+      }
+      break;
+
+    default:
+      if (productExistsOnCart) {
+        if (quantity !== 0) {
+          return changeProductCartQuantity(id, quantity, cart);
+        }
+        return deleteProductFromCart(id, cart);
+      }
+      return addProductToCart(newProduct, quantity, cart);
+  }
+  return cart;
 };
 
 // eslint-disable-next-line default-param-last
@@ -45,6 +100,15 @@ const shop = (state = INITIAL_STATE, action) => {
       return produce(state, (draft) => {
         // eslint-disable-next-line no-param-reassign
         draft.producer = action.producer;
+      });
+    }
+
+    case types.HANDLE_PRODUCT_CART: {
+      const currentCart = state.cart;
+      return produce(state, (draft) => {
+        console.log(handleProductCart(action.product, action.quantity, currentCart));
+        // eslint-disable-next-line no-param-reassign
+        draft.cart = handleProductCart(action.product, action.quantity, currentCart);
       });
     }
 
