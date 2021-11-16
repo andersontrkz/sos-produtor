@@ -10,13 +10,13 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ChakraProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ChakraProvider>
           <App />
-        </BrowserRouter>
-      </ChakraProvider>
-    </Provider>
+        </ChakraProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 );

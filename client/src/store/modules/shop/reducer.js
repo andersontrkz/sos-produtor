@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   producers: [],
   selectedProducerMapMarker: null,
   mapCenter: { lat: -23.561684, lng: -46.625378 },
+  producer: {},
 };
 
 // eslint-disable-next-line default-param-last
@@ -27,7 +28,6 @@ const shop = (state = INITIAL_STATE, action) => {
     }
 
     case types.SET_SELECTED_PRODUCER_MAP_MARKER: {
-      console.log(action);
       return produce(state, (draft) => {
         // eslint-disable-next-line no-param-reassign
         draft.selectedProducerMapMarker = action.id;
@@ -38,6 +38,13 @@ const shop = (state = INITIAL_STATE, action) => {
       return produce(state, (draft) => {
         // eslint-disable-next-line no-param-reassign
         draft.mapCenter = action.location;
+      });
+    }
+
+    case types.SET_PRODUCER: {
+      return produce(state, (draft) => {
+        // eslint-disable-next-line no-param-reassign
+        draft.producer = action.producer;
       });
     }
 

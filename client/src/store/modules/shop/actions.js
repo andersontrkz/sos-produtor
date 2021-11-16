@@ -11,3 +11,7 @@ export const setMapMarkerSelectedAction = (id) => (
   { type: types.SET_SELECTED_PRODUCER_MAP_MARKER, id });
 
 export const setMapCenterAction = (location) => ({ type: types.SET_MAP_CENTER, location });
+
+export const requestProducerAction = (id) => ({ type: types.REQUEST_PRODUCER, id });
+
+export const setProducerAction = (producer) => ({ type: types.SET_PRODUCER, producer });
