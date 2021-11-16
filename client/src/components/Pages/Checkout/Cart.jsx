@@ -8,8 +8,8 @@ const Cart = () => {
   const { cart } = useSelector((state) => state.shop);
 
   return (
-    <Box>
-      {cart.map((product) => <CartItem product={product} />)}
+    <Box px={2} borderRadius="8px" border="1px solid rgba(50, 200, 100, 0.2)" p={2} mt={3} overflowY="auto" maxH="70vh">
+      {cart.map((product, index) => <CartItem product={product} index={index} />)}
     </Box>
   );
 };

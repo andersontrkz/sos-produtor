@@ -6,6 +6,7 @@ import {
   DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Cart from '../Pages/Checkout/Cart';
 
@@ -37,7 +38,9 @@ const Sidebar = ({ isOpen, onClose }) => {
             {`R$ ${totalCartPrice.toFixed(2)}`}
           </Text>
         </DrawerFooter>
-        <Button w="100%" borderRadius="none" size="lg" colorScheme="whatsapp">Finalizar Compra</Button>
+        <Link to="/checkout">
+          <Button w="100%" borderRadius="none" size="lg" colorScheme="whatsapp">Finalizar Compra</Button>
+        </Link>
       </DrawerContent>
     </Drawer>
   );
