@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 
 const ProductsList = ({ products }) => (
   <Grid templateColumns="repeat(4, 1fr)" gap={4}>
-    {products && products.map((product) => <ProductCard product={product} />)}
+    {products?.map((product) => <ProductCard product={product} />)}
   </Grid>
 );
 

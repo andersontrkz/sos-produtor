@@ -26,7 +26,7 @@ const Producer = ({ match }) => {
             <ProducerColumn producer={producer} />
           </GridItem>
           <GridItem colSpan={9} py={8}>
-            <Text pb={1} mb={2} w="max-content" borderBottom="2px solid var(--primary-color)">{`Produtos (${producer.products.length})`}</Text>
+            <Text pb={1} mb={2} w="max-content" borderBottom="2px solid var(--primary-color)">{`Produtos (${producer.products?.length})`}</Text>
             <ProductsList products={producer.products} />
           </GridItem>
         </Grid>

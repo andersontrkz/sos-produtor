@@ -45,10 +45,8 @@ const handleProductCart = (newProduct, quantity, cart) => {
     case -1:
       if (productExistsOnCart) {
         if (productExistsOnCart.quantity > 1) {
-          console.log('DIMINUI');
           return changeProductCartQuantity(id, productExistsOnCart.quantity - 1, cart);
         }
-        console.log('DELETA');
         return deleteProductFromCart(id, cart);
       }
       break;
@@ -106,9 +104,13 @@ const shop = (state = INITIAL_STATE, action) => {
     case types.HANDLE_PRODUCT_CART: {
       const currentCart = state.cart;
       return produce(state, (draft) => {
-        console.log(handleProductCart(action.product, action.quantity, currentCart));
         // eslint-disable-next-line no-param-reassign
         draft.cart = handleProductCart(action.product, action.quantity, currentCart);
+        // eslint-disable-next-line no-param-reassign
+        draft.totalCartQuantity = draft.cart.reduce((acc, item) => acc + item.quantity, 0);
+        // eslint-disable-next-line no-param-reassign
+        draft.totalCartPrice = (
+          draft.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0));
       });
     }
 

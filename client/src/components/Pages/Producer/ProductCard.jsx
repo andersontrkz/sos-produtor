@@ -74,7 +74,7 @@ const ProductCard = ({
           {`R$ ${price.toFixed(2)}`}
         </Text>
         <Flex p={4}>
-          <Button colorScheme="whatsapp" borderRadius="8px 0 0 8px" onClick={() => handleProductCart(-1)}>-</Button>
+          <Button bg="var(--secondary-color)" color="var(--white-color)" borderRadius="8px 0 0 8px" onClick={() => handleProductCart(-1)}>-</Button>
           <Input
             borderRadius={0}
             textAlign="center"
@@ -82,7 +82,7 @@ const ProductCard = ({
             onChange={({ target }) => handleQuantityInput(target)}
             onBlur={({ target }) => onFocusOutQuantityInput(target)}
           />
-          <Button colorScheme="whatsapp" borderRadius="0 8px 8px 0" onClick={() => handleProductCart(1)}>+</Button>
+          <Button bg="var(--secondary-color)" color="var(--white-color)" borderRadius="0 8px 8px 0" onClick={() => handleProductCart(1)}>+</Button>
         </Flex>
       </Flex>
     </GridItem>
