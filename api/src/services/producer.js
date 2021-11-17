@@ -15,7 +15,7 @@ const getAll = async () => {
 const getById = async ({ id }) => {
   try {
     const producer = await Producer.findById(id);
-    const products = await Product.find({ producer_id: id });
+    const products = await Product.find({ producer_id: id }).populate('producer_id', 'seller_id');
 
     // eslint-disable-next-line no-underscore-dangle
     return { ...producer._doc, products };

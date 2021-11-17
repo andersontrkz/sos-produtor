@@ -1,19 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, GridItem, Text } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
+import underscore from 'underscore';
 
 import Layout from '../../Layout/Layout';
 import Form from './Form';
 import Cart from './Cart';
 
 const Checkout = () => {
-  const { cart, totalCartQuantity, totalCartPrice } = useSelector((state) => state.shop);
+  const {
+    cart, totalCartQuantity, totalCartPrice, transactionFee, defaultSeller,
+  } = useSelector((state) => state.shop);
 
   const generateSevenDaysDate = () => {
     const date = new Date();
     date.setDate(date.getDate() + 7);
 
     return date;
+  };
+
+  const totals = cart.reduce((total, product) => total + product.price, 0);
+
+  const generateSplitRules = () => {
+    const productsByProducer = underscore.groupBy(
+      cart,
+      // eslint-disable-next-line no-underscore-dangle
+      (product) => product.producer_id.seller_id,
+    );
+    const result = [];
+
+    Object.keys(productsByProducer).forEach((producer) => {
+      const products = productsByProducer[producer];
+
+      const totalValuePerProducer = products
+        .reduce((total, product) => total + product.price, 0)
+        .toFixed(2);
+
+      const totalFee = (totalValuePerProducer * transactionFee).toFixed(2);
+
+      result.push({
+        // eslint-disable-next-line no-underscore-dangle
+        seller_id: products[0].producer_id.seller_id,
+        percentage: Math.floor(
+          ((totalValuePerProducer - totalFee) / totals) * 100,
+        ),
+        liable: true,
+        charge_processing_fee: true,
+      });
+    });
+
+    const totalProducersPercentage = result
+      .reduce((acc, recipient) => acc + parseFloat(recipient.percentage), 0);
+
+    result.push({
+      ...defaultSeller,
+      percentage: 100 - totalProducersPercentage,
+    });
+
+    return result;
   };
 
   const [transaction, setTransaction] = useState({
@@ -38,7 +82,7 @@ const Checkout = () => {
       },
     },
     items: [],
-    split_rules: [],
+    split_rules: generateSplitRules(),
   });
 
   const setShippingProperties = (key, value) => {

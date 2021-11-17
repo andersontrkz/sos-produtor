@@ -11,6 +11,12 @@ const INITIAL_STATE = {
   cart: [],
   totalCartQuantity: 0,
   totalCartPrice: 0,
+  transactionFee: 0.1,
+  defaultSeller: {
+    seller_id: 'sos-produtor-seller-id',
+    percentage: 10,
+    liable: true,
+  },
 };
 
 const changeProductCartQuantity = (id, quantity, cart) => cart.map((product) => {
