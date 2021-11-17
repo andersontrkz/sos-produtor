@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Grid, GridItem, Image, Button, Badge, Text, Input,
 } from '@chakra-ui/react';
-import PropTypes from 'prop-types';
 
 const CartItem = ({ product }) => (
   <Grid templateColumns="repeat(12, 1fr)" overflowY="auto" maxH="l" p={2} boxShadow="inner" borderRadius="8px">
@@ -44,7 +44,6 @@ const CartItem = ({ product }) => (
 );
 
 CartItem.propTypes = {
-  // index: PropTypes.number.isRequired,
   product: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,

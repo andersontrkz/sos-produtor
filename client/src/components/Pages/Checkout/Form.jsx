@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Grid, GridItem, Text, Input, Button, Flex,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 
-const Form = () => {
+const Form = ({
+  setShippingProperties, transaction, setTransaction, finalizeTransaction,
+}) => {
   const { totalCartPrice } = useSelector((state) => state.shop);
 
   return (
@@ -14,14 +17,38 @@ const Form = () => {
       </GridItem>
       <GridItem colSpan={12}>
         <Input
-          colSpan={11}
-          placeholder="CEP"
+          placeholder="Logradouro"
           bg="gray.100"
           border={0}
           color="gray.500"
           _placeholder={{
             color: 'gray.500',
           }}
+          onChange={({ target }) => setShippingProperties('street', target.value)}
+        />
+      </GridItem>
+      <GridItem colSpan={4}>
+        <Input
+          placeholder="Número"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setShippingProperties('street_number', target.value)}
+        />
+      </GridItem>
+      <GridItem colSpan={8}>
+        <Input
+          placeholder="Bairro"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setShippingProperties('neighborhood', target.value)}
         />
       </GridItem>
       <GridItem colSpan={6}>
@@ -33,39 +60,7 @@ const Form = () => {
           _placeholder={{
             color: 'gray.500',
           }}
-        />
-      </GridItem>
-      <GridItem colSpan={6}>
-        <Input
-          placeholder="Logradouro"
-          bg="gray.100"
-          border={0}
-          color="gray.500"
-          _placeholder={{
-            color: 'gray.500',
-          }}
-        />
-      </GridItem>
-      <GridItem colSpan={5}>
-        <Input
-          placeholder="Número"
-          bg="gray.100"
-          border={0}
-          color="gray.500"
-          _placeholder={{
-            color: 'gray.500',
-          }}
-        />
-      </GridItem>
-      <GridItem colSpan={5}>
-        <Input
-          placeholder="Bairro"
-          bg="gray.100"
-          border={0}
-          color="gray.500"
-          _placeholder={{
-            color: 'gray.500',
-          }}
+          onChange={({ target }) => setShippingProperties('city', target.value)}
         />
       </GridItem>
       <GridItem colSpan={2}>
@@ -77,6 +72,20 @@ const Form = () => {
           _placeholder={{
             color: 'gray.500',
           }}
+          onChange={({ target }) => setShippingProperties('state', target.value)}
+        />
+      </GridItem>
+      <GridItem colSpan={4}>
+        <Input
+          colSpan={11}
+          placeholder="CEP"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setShippingProperties('zipcode', target.value)}
         />
       </GridItem>
       <br />
@@ -85,7 +94,18 @@ const Form = () => {
       </GridItem>
       <GridItem colSpan={12}>
         <Input
-          colSpan={11}
+          placeholder="Títular do Cartão"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={(e) => setTransaction({ ...transaction, card_holder_name: e.target.value })}
+        />
+      </GridItem>
+      <GridItem colSpan={6}>
+        <Input
           placeholder="Número do Cartão"
           bg="gray.100"
           border={0}
@@ -93,9 +113,10 @@ const Form = () => {
           _placeholder={{
             color: 'gray.500',
           }}
+          onChange={(e) => setTransaction({ ...transaction, card_number: e.target.value })}
         />
       </GridItem>
-      <GridItem colSpan={6}>
+      <GridItem colSpan={4}>
         <Input
           placeholder="Validade"
           bg="gray.100"
@@ -104,9 +125,10 @@ const Form = () => {
           _placeholder={{
             color: 'gray.500',
           }}
+          onChange={(e) => setTransaction({ ...transaction, card_expiration_date: e.target.value })}
         />
       </GridItem>
-      <GridItem colSpan={6}>
+      <GridItem colSpan={2}>
         <Input
           placeholder="CVV"
           bg="gray.100"
@@ -115,6 +137,7 @@ const Form = () => {
           _placeholder={{
             color: 'gray.500',
           }}
+          onChange={(e) => setTransaction({ ...transaction, card_cvv: e.target.value })}
         />
       </GridItem>
       <br />
@@ -129,12 +152,20 @@ const Form = () => {
           fontFamily="heading"
           w="full"
           colorScheme="whatsapp"
+          onClick={() => finalizeTransaction()}
         >
           Finalizar Compra
         </Button>
       </GridItem>
     </Grid>
   );
+};
+
+Form.propTypes = {
+  setShippingProperties: PropTypes.shape().isRequired,
+  transaction: PropTypes.shape().isRequired,
+  setTransaction: PropTypes.shape().isRequired,
+  finalizeTransaction: PropTypes.shape().isRequired,
 };
 
 export default Form;
