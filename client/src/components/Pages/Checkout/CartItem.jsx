@@ -53,8 +53,8 @@ const CartItem = ({ product, product: { _id } }) => {
   }, [cart]);
 
   return (
-    <Grid templateColumns="repeat(12, 1fr)" overflowY="auto" maxH="l" p={2} boxShadow="inner" borderRadius="8px">
-      <GridItem colSpan={2} rowSpan={3} border="1px solid rgba(40, 200, 100, 0.3)" borderRadius="8px">
+    <Grid templateColumns="repeat(12, 1fr)" overflowY="auto" p={2} boxShadow="inner" borderRadius="8px" h="100px">
+      <GridItem colSpan={2} rowSpan={3} border="1px solid rgba(40, 200, 100, 0.3)" borderRadius="8px" h="100%">
         <Image src={product.image} borderRadius="8px" w="100%" h="100%" objectFit="contain" />
       </GridItem>
       <GridItem colSpan={9} pt={1} fontSize="sm" ml={2}>
@@ -82,7 +82,7 @@ const CartItem = ({ product, product: { _id } }) => {
       </GridItem>
       <GridItem colSpan={9} pb={1} display="flex" justifyContent="space-between" ml={2}>
         <Badge fontSize="xs" colorScheme="whatsapp" display="flex" alignItems="center">
-          {`Preço ${product.price}`}
+          {`Preço ${product.price.toFixed(2)}`}
         </Badge>
       </GridItem>
       <GridItem colSpan={1} display="flex" justifyContent="center" alignItems="center">
