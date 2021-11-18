@@ -35,7 +35,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             TOTAL
           </Text>
           <Text variant="outline" mr={3} onClick={onClose}>
-            {`R$ ${totalCartPrice.toFixed(2)}`}
+            {`R$ ${totalCartPrice}`}
           </Text>
         </DrawerFooter>
         <Link to="/checkout">

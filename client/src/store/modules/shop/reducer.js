@@ -1,6 +1,7 @@
 import produce from 'immer';
 
 import types from './types';
+import { localStorageCart, localStorageCartPrice, localStorageCartQuantity } from '../../../localStorage/cart';
 
 const INITIAL_STATE = {
   customer: {},
@@ -8,9 +9,9 @@ const INITIAL_STATE = {
   selectedProducerMapMarker: null,
   mapCenter: { lat: -23.561684, lng: -46.625378 },
   producer: {},
-  cart: [],
-  totalCartQuantity: 0,
-  totalCartPrice: 0,
+  cart: localStorageCart(),
+  totalCartQuantity: localStorageCartQuantity(),
+  totalCartPrice: localStorageCartPrice(),
   transactionFee: 0.1,
   defaultSeller: {
     seller_id: 'sos-produtor-seller-id',
@@ -104,9 +105,10 @@ const shop = (state = INITIAL_STATE, action) => {
       const currentCart = state.cart;
       return produce(state, (draft) => {
         draft.cart = handleProductCart(action.product, action.quantity, currentCart);
+        localStorage.setItem('SOS_PRODUTOR_CART', JSON.stringify(draft.cart));
         draft.totalCartQuantity = draft.cart.reduce((acc, item) => acc + item.quantity, 0);
         draft.totalCartPrice = (
-          draft.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0));
+          draft.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)).toFixed(2);
       });
     }
 

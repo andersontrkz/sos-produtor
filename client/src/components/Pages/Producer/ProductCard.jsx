@@ -18,6 +18,8 @@ const ProductCard = ({
   const [inputQuantity, setInputQuantity] = useState(0);
 
   const updateProductQuantity = () => {
+    console.log('cart');
+    console.log(cart);
     const productInCart = cart.find((cartProduct) => cartProduct._id === _id);
 
     if (productInCart) {

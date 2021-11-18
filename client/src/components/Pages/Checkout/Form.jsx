@@ -145,7 +145,7 @@ const Form = ({
       <GridItem colSpan={12}>
         <Flex justify="space-between">
           <Text fontWeight="bold">Total</Text>
-          <Text fontWeight="bold">{`R$ ${totalCartPrice.toFixed(2)}`}</Text>
+          <Text fontWeight="bold">{`R$ ${totalCartPrice}`}</Text>
         </Flex>
       </GridItem>
       <GridItem colSpan={12}>
