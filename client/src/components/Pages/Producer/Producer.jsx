@@ -21,12 +21,12 @@ const Producer = ({ match }) => {
       {producer.products
       && (
       <Layout>
-        <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-          <GridItem colSpan={3} py={8} px={16}>
+        <Grid templateColumns="repeat(21, 1fr)" gap={4}>
+          <GridItem colSpan={4} p={8}>
             <ProducerColumn producer={producer} />
           </GridItem>
-          <GridItem colSpan={9} py={8}>
-            <Text pb={1} mb={2} w="max-content" borderBottom="2px solid var(--primary-color)">{`Produtos (${producer.products?.length})`}</Text>
+          <GridItem colSpan={15} py={8}>
+            <Text pb={1} mb={3} w="max-content" borderBottom="2px solid var(--tertiary-color)">{`Produtos (${producer.products?.length})`}</Text>
             <ProductsList products={producer.products} />
           </GridItem>
         </Grid>

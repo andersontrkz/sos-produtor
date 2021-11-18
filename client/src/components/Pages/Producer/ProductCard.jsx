@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
-  GridItem, Button, Input, Flex, Text, Image, Badge,
+  GridItem, Button, Input, Flex, Text, Image, Badge, Box,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,7 +10,7 @@ import { handleProductCartAction } from '../../../store/modules/shop/actions';
 const ProductCard = ({
   product,
   product: {
-    _id, name, price, image, measurement,
+    _id, name, price, image, measurement, benefits = { discount: '-50%', free_delivery: true, new: true },
   },
 }) => {
   const dispatch = useDispatch();
@@ -18,7 +18,6 @@ const ProductCard = ({
   const [inputQuantity, setInputQuantity] = useState(0);
 
   const updateProductQuantity = () => {
-    // eslint-disable-next-line no-underscore-dangle
     const productInCart = cart.find((cartProduct) => cartProduct._id === _id);
 
     if (productInCart) {
@@ -34,14 +33,12 @@ const ProductCard = ({
 
   const handleQuantityInput = ({ value }) => {
     // BASED ON https://www.ti-enxame.com/pt/javascript/regex-para-verificar-se-uma-string-contem-apenas-numeros/942732264/
-    // eslint-disable-next-line prefer-regex-literals
     const regex = new RegExp(/^-?\d*\.?\d*$/);
     if (regex.test(value)) {
       if (value !== '') {
         if (parseInt(value[0], 10) === 0 && parseInt(value[1], 10) === 0) {
           handleProductCart(parseInt(value, 10));
         } else {
-          // Aceita zero no input
           handleProductCart(value);
         }
       } else {
@@ -61,10 +58,18 @@ const ProductCard = ({
   }, [cart]);
 
   return (
-    <GridItem w="60" h="72" maxW="60" maxH="72" boxShadow="xl" bg="#FFF">
-      <Badge w="fit-content" fontSize="0.8em" colorScheme="red" display="flex" alignItems="center">
-        {`${-50.00}%`}
-      </Badge>
+    <GridItem w="60" h="72" maxW="60" maxH="72" boxShadow="xl" bg="#FFF" _hover={{ transform: 'scale(1.05)', transition: '.9s' }}>
+      <Box h="19px">
+        <Badge my={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="whatsapp" display="flex" alignItems="center">
+          {benefits?.free_delivery && 'Frete Grátis'}
+        </Badge>
+        <Badge mb={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="red" display="flex" alignItems="center">
+          {benefits?.discount && `${benefits?.discount} OFF`}
+        </Badge>
+        <Badge px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="linkedin" display="flex" alignItems="center">
+          {benefits?.new && 'Novo'}
+        </Badge>
+      </Box>
       <Image src={image} maxH="150px" maxW="150px" m="0 auto" />
       <Flex flexDirection="column" justify="center" textAlign="center">
         <Text maxH="50px" overflowY="auto">
@@ -94,6 +99,11 @@ ProductCard.propTypes = {
     _id: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.number,
+    benefits: PropTypes.shape({
+      discount: PropTypes.number,
+      free_delivery: PropTypes.bool,
+      new: PropTypes.bool,
+    }),
     image: PropTypes.string,
     measurement: PropTypes.shape({
       amount: PropTypes.number,
