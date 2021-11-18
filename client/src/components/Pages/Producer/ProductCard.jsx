@@ -10,7 +10,7 @@ import { handleProductCartAction } from '../../../store/modules/shop/actions';
 const ProductCard = ({
   product,
   product: {
-    _id, name, price, image, measurement, benefits = { discount: '-50%', free_delivery: true, new: true },
+    _id, name, price, image, measurement, benefits,
   },
 }) => {
   const dispatch = useDispatch();
@@ -60,17 +60,25 @@ const ProductCard = ({
   return (
     <GridItem w="60" h="72" maxW="60" maxH="72" boxShadow="xl" bg="#FFF" _hover={{ transform: 'scale(1.05)', transition: '.9s' }}>
       <Box h="19px">
+        {benefits?.free_delivery && (
         <Badge my={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="whatsapp" display="flex" alignItems="center">
-          {benefits?.free_delivery && 'Frete Grátis'}
+          Frete Grátis
         </Badge>
-        <Badge mb={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="red" display="flex" alignItems="center">
-          {benefits?.discount && `${benefits?.discount} OFF`}
+        ) }
+        {benefits?.discount && (
+        <Badge my={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="red" display="flex" alignItems="center">
+          {`${benefits?.discount} OFF`}
         </Badge>
-        <Badge px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="linkedin" display="flex" alignItems="center">
-          {benefits?.new && 'Novo'}
+        )}
+        {benefits?.new && (
+        <Badge my={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="linkedin" display="flex" alignItems="center">
+          Novo
         </Badge>
+        )}
       </Box>
-      <Image src={image} maxH="150px" maxW="150px" m="0 auto" />
+      <Flex h="36">
+        <Image src={image} m="0 auto" objectFit="cover" />
+      </Flex>
       <Flex flexDirection="column" justify="center" textAlign="center">
         <Text maxH="50px" overflowY="auto">
           {`${name} - ${measurement.amount + measurement.unit}`}

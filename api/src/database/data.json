@@ -1,125 +1,75 @@
 [
   {
-    "name": "Seu Zé",
-    "image": "https://previews.123rf.com/images/bialasiewicz/bialasiewicz1606/bialasiewicz160602342/58998652-older-man-concentraiting-on-watering-plants-in-a-garden-by-his-green-water-can.jpg",
-    "cost": "$$$",
-    "rate": 1,
+    "name": "João Carneiro",
+    "image": "https://image.freepik.com/fotos-gratis/perto-do-velho-fazendeiro-segurando-uma-cesta-de-legumes-o-homem-esta-parado-no-jardim-senior-em-um-avental-preto_1157-39733.jpg",
+    "cost": 5,
+    "rate": 4,
     "location": {
-      "lat": -23.561684,
-      "lng": -46.625378
+      "latitude": -23.561684,
+      "longitude": -46.625378
+    },
+    "benefits": {
+      "discount": false,
+      "free_delivery": false,
+      "new": true,
+      "offer": false
     },
     "products": [
       {
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
+        "name": "Alface Crespa",
+        "image": "https://images.squarespace-cdn.com/content/v1/5b8edfa12714e508f756f481/1543944726778-3R28J0BST06GRZCOF7UR/alface-crespa-verde-hidropo%CC%82nica.png?format=1000w",
+        "price": 4.90,
         "rate": 4.5,
         "measurement": {
-          "amount": "500",
-          "unit": "g"
+          "amount": "1",
+          "unit": "UN"
+        },
+        "benefits": {
+          "discount": "-20%",
+          "free_delivery": false,
+          "new": false
+        }
+      },{
+        "name": "Tomate Carmem",
+        "image": "https://imagensemoldes.com.br/wp-content/uploads/2020/07/Pizza-Tomate-PNG-1280x720.png",
+        "price": 11.80,
+        "rate": 2,
+        "measurement": {
+          "amount": "1",
+          "unit": "Kg"
+        },
+        "benefits": {
+          "discount": "-30%",
+          "free_delivery": false,
+          "new": false
         }
       },{
         "name": "Morango",
         "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
+        "price": 8.60,
+        "rate": 3,
         "measurement": {
           "amount": "500",
           "unit": "g"
+        },
+        "benefits": {
+          "discount": false,
+          "free_delivery": false,
+          "new": false
         }
       },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
+        "name": "Mel Floresta Verde",
+        "image": "https://apiariosfloresta.com.br/wp-content/uploads/2020/07/mel-900g.png",
         "price": 17.8,
-        "rate": 4.5,
+        "rate": 5,
         "measurement": {
-          "amount": "500",
+          "amount": "990",
           "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      }
-    ]
-  },
-  {
-    "name": "Dona Maria",
-    "image": "https://previews.123rf.com/images/alinatroeva/alinatroeva2007/alinatroeva200700945/151288783-mature-elderly-woman-watering-plants-with-water-hose-farming-gardening-agriculture-old-age-and-peopl.jpg",
-    "cost": "$$",
-    "rate": 2,
-    "location": {
-      "lat": -23.57110562,
-      "lng": -46.58418083
-    },
-    "products": [
-      {
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
+        },
+        "benefits": {
+          "discount": false,
+          "free_delivery": true,
+          "new": true
         }
       }
     ]
