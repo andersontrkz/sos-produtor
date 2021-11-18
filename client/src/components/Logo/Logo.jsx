@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Logo = ({ color }) => (
   <Link to="/" style={{ display: 'flex' }}>
-    <Text fontWeight="bold" fontSize="4xl" color="var(--primary-color)">SOS</Text>
+    <Text fontWeight="bold" fontSize="4xl" color="var(--tertiary-color)">SOS</Text>
     <Text fontWeight="bold" fontSize="4xl" color={`var(--${color}-color)`}>Produtor</Text>
   </Link>
 );

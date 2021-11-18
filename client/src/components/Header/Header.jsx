@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Flex, Button } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
+import { BsCart3 } from 'react-icons/bs';
 
 import Logo from '../Logo/Logo';
 
@@ -9,9 +10,22 @@ const Header = ({ onOpen }) => {
   const { totalCartQuantity } = useSelector((state) => state.shop);
 
   return (
-    <Flex bg="var(--secondary-color)" justify="center" alignItems="center" h="8vh">
+    <Flex bg="var(--primary-color)" justify="center" alignItems="center" h="8vh">
       <Logo color="white" />
-      <Button position="absolute" right="20" bg="var(--primary-color)" color="white" onClick={onOpen}>{`Meu Carrinho (${totalCartQuantity})`}</Button>
+      { totalCartQuantity ? (
+        <Button
+          position="absolute"
+          right="20"
+          bg="var(--tertiary-color)"
+          color="white"
+          transition=".9s"
+          leftIcon={<BsCart3 />}
+          _hover={{ backgroundColor: 'var(--quaternary-color)' }}
+          onClick={onOpen}
+        >
+          {`Meu Carrinho (${totalCartQuantity})`}
+        </Button>
+      ) : false }
     </Flex>
   );
 };

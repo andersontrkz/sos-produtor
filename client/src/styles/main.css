@@ -3,17 +3,17 @@
 @import url('./theme/login.css');
 
 :root {
-  --primary-color: #e9972d;
-  --secondary-color: #14371f;
-  --tertiary-color: #c4501b;
-  --quaternary-color: #4a7140;
+  --primary-color: rgb(18, 92, 42);
+  --secondary-color: #29c35e;
+  --tertiary-color: #dd8d25;
+  --quaternary-color: #ce7500;
   --black-color: #110f00;
   --white-color: #fafafa;
   --main-background-color: #F9F9FE;
 }
 
 * {
-  font-family: 'Open Sans';
+  font-family: 'Montserrat';
 }
 
 html, body {
@@ -24,6 +24,8 @@ html, body {
 .mercadopago-action-button {
   display: grid;
   font-size: larger;
-  margin: 0;
-  color: red;
+}
+
+.mercadopago-button {
+  background-color: var(--primary-color) !important;
 }
