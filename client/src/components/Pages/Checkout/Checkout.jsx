@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Grid, GridItem, Text } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import underscore from 'underscore';
+import { useMercadopago } from 'react-sdk-mercadopago';
 
+import { createTransaction } from '../../../apis/mercadopago';
 import Layout from '../../Layout/Layout';
 import Form from './Form';
 import Cart from './Cart';
@@ -60,6 +62,33 @@ const Checkout = () => {
     return result;
   };
 
+  const mercadopago = useMercadopago.v2('TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0', {
+    locale: 'pt-BR',
+  });
+
+  const generateTrasnaction = async () => {
+    const token = await createTransaction();
+    if (mercadopago) {
+      mercadopago.checkout({
+        preference: {
+          id: token,
+        },
+        render: {
+          container: '.mercadopago-action-button',
+          type: 'wallet',
+          label: 'Finalizar Compra',
+          theme: {
+            headerColor: 'red', // Dark color
+          },
+        },
+      });
+    }
+  };
+
+  useEffect(() => {
+    generateTrasnaction();
+  }, [mercadopago]);
+
   const [transaction, setTransaction] = useState({
     amount: 0,
     card_number: '',
@@ -99,7 +128,7 @@ const Checkout = () => {
   };
 
   const finalizeTransaction = () => {
-    console.log(transaction);
+    // createTransaction();
   };
 
   useEffect(() => {

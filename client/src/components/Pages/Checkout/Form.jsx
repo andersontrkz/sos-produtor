@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, GridItem, Text, Input, Button, Flex,
+  Grid, GridItem, Text, Input, Flex,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 
@@ -148,14 +149,12 @@ const Form = ({
         </Flex>
       </GridItem>
       <GridItem colSpan={12}>
-        <Button
-          fontFamily="heading"
-          w="full"
-          colorScheme="whatsapp"
-          onClick={() => finalizeTransaction()}
-        >
-          Finalizar Compra
-        </Button>
+        <section
+          tabIndex={0}
+          role="button"
+          onKeyPress={() => finalizeTransaction()}
+          className="mercadopago-action-button"
+        />
       </GridItem>
     </Grid>
   );
