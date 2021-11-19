@@ -9,10 +9,15 @@ import Logo from '../Logo/Logo';
 const Header = ({ onOpen }) => {
   const { totalCartQuantity } = useSelector((state) => state.shop);
 
+  const currentRoute = () => {
+    const HREF = window.location.href.split('/');
+    return HREF[HREF.length - 1];
+  };
+
   return (
     <Flex bg="var(--primary-color)" justify="center" alignItems="center" h="8vh">
       <Logo color="white" />
-      { totalCartQuantity ? (
+      { totalCartQuantity && currentRoute() !== 'checkout' ? (
         <Button
           position="absolute"
           right="20"

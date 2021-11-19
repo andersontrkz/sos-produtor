@@ -5,6 +5,7 @@ import {
   Grid, GridItem, Text, Input, Flex,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
+import { BsCashCoin, BsTruck } from 'react-icons/bs';
 
 const Form = ({
   setShippingProperties, transaction, setTransaction, finalizeTransaction,
@@ -14,7 +15,17 @@ const Form = ({
   return (
     <Grid templateColumns="repeat(12, 1fr)" gap={4}>
       <GridItem colSpan={12}>
-        <Text pb={1} w="max-content" borderBottom="2px solid var(--primary-color)">Dados de Entrega</Text>
+        <Text
+          pb={1}
+          w="max-content"
+          borderBottom="2px solid var(--primary-color)"
+          fontWeight={600}
+          display="flex"
+          alignItems="center"
+        >
+          <BsTruck style={{ marginRight: '8px' }} />
+          Dados de Entrega
+        </Text>
       </GridItem>
       <GridItem colSpan={12}>
         <Input
@@ -91,7 +102,17 @@ const Form = ({
       </GridItem>
       <br />
       <GridItem colSpan={12}>
-        <Text pb={1} w="max-content" borderBottom="2px solid var(--primary-color)">Dados de Pagamento</Text>
+        <Text
+          pb={1}
+          w="max-content"
+          borderBottom="2px solid var(--primary-color)"
+          fontWeight={600}
+          display="flex"
+          alignItems="center"
+        >
+          <BsCashCoin style={{ marginRight: '8px' }} />
+          Dados de Pagamento
+        </Text>
       </GridItem>
       <GridItem colSpan={12}>
         <Input

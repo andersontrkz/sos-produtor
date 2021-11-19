@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import underscore from 'underscore';
 import { Grid, GridItem, Text } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import underscore from 'underscore';
 import { useMercadopago } from 'react-sdk-mercadopago';
+import { BsCart3 } from 'react-icons/bs';
 
 import { createTransaction } from '../../../apis/mercadopago';
 import Layout from '../../Layout/Layout';
@@ -142,16 +143,28 @@ const Checkout = () => {
   return (
     <Layout>
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+        { cart.length ? (
+          <GridItem rowSpan={11} colSpan={1} py={8} px={16}>
+            <Form
+              setShippingProperties={setShippingProperties}
+              transaction={transaction}
+              setTransaction={setTransaction}
+              finalizeTransaction={finalizeTransaction}
+            />
+          </GridItem>
+        ) : false}
         <GridItem rowSpan={11} colSpan={1} py={8} px={16}>
-          <Form
-            setShippingProperties={setShippingProperties}
-            transaction={transaction}
-            setTransaction={setTransaction}
-            finalizeTransaction={finalizeTransaction}
-          />
-        </GridItem>
-        <GridItem rowSpan={11} colSpan={1} py={8} px={16}>
-          <Text pb={1} w="max-content" borderBottom="2px solid var(--primary-color)">{`Meu Carrinho (${totalCartQuantity})`}</Text>
+          <Text
+            pb={1}
+            fontWeight={600}
+            display="flex"
+            alignItems="center"
+            w="max-content"
+            borderBottom="2px solid var(--primary-color)"
+          >
+            <BsCart3 style={{ marginRight: '8px' }} />
+            {`Meu Carrinho (${totalCartQuantity})`}
+          </Text>
           <Cart />
         </GridItem>
       </Grid>
