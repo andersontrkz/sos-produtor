@@ -5,7 +5,7 @@ import {
   Grid, GridItem, Text, Input, Flex,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { BsTruck } from 'react-icons/bs';
+import { BsCashCoin, BsTruck } from 'react-icons/bs';
 
 const Form = ({
   transaction, setTransaction, finalizeTransaction,
@@ -21,8 +21,127 @@ const Form = ({
     );
   };
 
+  const setTransactionPayerData = ({ id, value }) => {
+    setTransaction({ ...transaction, payer: { ...transaction.payer, [id]: value } });
+  };
+
+  const setTransactionPayerCPF = ({ id, value }) => {
+    setTransaction(
+      {
+        ...transaction,
+        payer: {
+          ...transaction.payer,
+          identification: { ...transaction.payer.identification, [id]: value },
+        },
+      },
+    );
+  };
+
+  const setTransactionPayerPhone = ({ id, value }) => {
+    setTransaction(
+      {
+        ...transaction,
+        payer: {
+          ...transaction.payer,
+          phone: { ...transaction.payer.phone, [id]: value },
+        },
+      },
+    );
+  };
+
   return (
     <Grid templateColumns="repeat(12, 1fr)" gap={4}>
+      <GridItem colSpan={12}>
+        <Text
+          pb={1}
+          w="max-content"
+          borderBottom="2px solid var(--primary-color)"
+          fontWeight={600}
+          display="flex"
+          alignItems="center"
+        >
+          <BsCashCoin style={{ marginRight: '8px' }} />
+          Dados do Comprador
+        </Text>
+      </GridItem>
+      <GridItem colSpan={4}>
+        <Input
+          id="name"
+          placeholder="Nome"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setTransactionPayerData(target)}
+        />
+      </GridItem>
+      <GridItem colSpan={4}>
+        <Input
+          id="surname"
+          placeholder="Sobrenome"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setTransactionPayerData(target)}
+        />
+      </GridItem>
+      <GridItem colSpan={4}>
+        <Input
+          placeholder="number"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setTransactionPayerCPF(target)}
+        />
+      </GridItem>
+      <GridItem colSpan={6}>
+        <Input
+          id="email"
+          placeholder="Email"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setTransactionPayerData(target)}
+        />
+      </GridItem>
+      <GridItem colSpan={2}>
+        <Input
+          id="area_code"
+          placeholder="DDD"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setTransactionPayerPhone(target)}
+        />
+      </GridItem>
+      <GridItem colSpan={4}>
+        <Input
+          id="numer"
+          placeholder="Telefone"
+          bg="gray.100"
+          border={0}
+          color="gray.500"
+          _placeholder={{
+            color: 'gray.500',
+          }}
+          onChange={({ target }) => setTransactionPayerPhone(target)}
+        />
+      </GridItem>
+      <br />
       <GridItem colSpan={12}>
         <Text
           pb={1}
@@ -127,7 +246,6 @@ const Form = ({
           tabIndex={0}
           role="button"
           onKeyPress={() => finalizeTransaction()}
-          onClick={() => finalizeTransaction()}
           className="mercadopago-action-button"
         />
       </GridItem>
