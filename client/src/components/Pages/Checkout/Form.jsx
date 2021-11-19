@@ -13,6 +13,7 @@ const Form = ({
   const { totalCartPrice } = useSelector((state) => state.shop);
 
   const setTransactionPayerAddress = ({ id, value }) => {
+    if (id === 'street_number') value = Number(value);
     setTransaction(
       {
         ...transaction,
@@ -38,6 +39,8 @@ const Form = ({
   };
 
   const setTransactionPayerPhone = ({ id, value }) => {
+    if (id === 'number') value = Number(value);
+
     setTransaction(
       {
         ...transaction,
@@ -92,7 +95,8 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={4}>
         <Input
-          placeholder="number"
+          id="number"
+          placeholder="CPF"
           bg="gray.100"
           border={0}
           color="gray.500"
@@ -130,7 +134,7 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={4}>
         <Input
-          id="numer"
+          id="number"
           placeholder="Telefone"
           bg="gray.100"
           border={0}
@@ -241,11 +245,12 @@ const Form = ({
           <Text fontWeight="bold">{`R$ ${totalCartPrice}`}</Text>
         </Flex>
       </GridItem>
-      <GridItem colSpan={12}>
+      <GridItem colSpan={12} onClick={finalizeTransaction}>
         <section
           tabIndex={0}
           role="button"
-          onKeyPress={() => finalizeTransaction()}
+          onKeyPress={finalizeTransaction}
+          onClick={finalizeTransaction}
           className="mercadopago-action-button"
         />
       </GridItem>

@@ -14,7 +14,6 @@ const Checkout = () => {
   const {
     cart, totalCartQuantity, totalCartPrice,
   } = useSelector((state) => state.shop);
-
   // const generateSevenDaysDate = () => {
   //   const date = new Date();
   //   date.setDate(date.getDate() + 7);
@@ -68,14 +67,8 @@ const Checkout = () => {
   });
 
   const [transaction, setTransaction] = useState({
-    items: [
-      {
-        title: 'Meu produto',
-        quantity: 1,
-        unit_price: 75.76,
-      },
-    ],
     marketplace_fee: 2.56,
+    items: [],
     payer: {
       name: '',
       surname: '',
@@ -105,8 +98,7 @@ const Checkout = () => {
     auto_return: 'approved',
   });
 
-  const generateTrasnaction = async () => {
-    const token = await createTransaction();
+  const generateTransaction = (token) => {
     if (mercadopago) {
       mercadopago.checkout({
         preference: {
@@ -125,7 +117,7 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    generateTrasnaction();
+    generateTransaction();
   }, [mercadopago]);
 
   const setShippingProperties = (key, value) => {
@@ -138,8 +130,9 @@ const Checkout = () => {
     });
   };
 
-  const finalizeTransaction = () => {
-    console.log('oi');
+  const finalizeTransaction = async () => {
+    const token = await createTransaction(transaction);
+    generateTransaction(token);
   };
 
   const setTransactionItems = () => {
@@ -161,6 +154,7 @@ const Checkout = () => {
 
   return (
     <Layout>
+      <Text onClick={finalizeTransaction}>Teste</Text>
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
         { cart.length ? (
           <GridItem rowSpan={11} colSpan={1} py={8} px={16}>

@@ -2,10 +2,13 @@ import axios from 'axios';
 
 const URL = 'http://localhost:3001/transaction';
 
-export const createTransaction = async (transactionData) => {
-  const transaction = await axios.post(URL, { transaction: transactionData });
-  console.log(transaction);
-  return transaction.data.id;
+export const createTransaction = async (transaction) => {
+  if (transaction) {
+    const request = await axios.post(URL, { transaction });
+
+    return request.data.id;
+  }
+  return false;
 };
 
 export const getTransaction = async () => {
@@ -26,5 +29,3 @@ export const getTransaction = async () => {
 
   // console.log(await axios.post(URL, options, headers));
 };
-
-getTransaction();

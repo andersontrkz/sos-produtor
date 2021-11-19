@@ -2,7 +2,9 @@ const router = require('express').Router();
 const mercadopago = require('../apis/mercadopago');
 
 router.post('/', (req, res) => {
-  const transaction = req.body;
+  const { transaction } = req.body;
+  console.log('transaction');
+  console.log(transaction);
   mercadopago.preferences.create(transaction)
     .then((response) => {
       res.json({
