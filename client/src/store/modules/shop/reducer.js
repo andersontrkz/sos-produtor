@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   customer: {},
   producers: [],
   selectedProducerMapMarker: null,
-  mapCenter: { lat: -23.561684, lng: -46.625378 },
+  mapCenter: { lat: -25.390721, lng: -51.462810 },
   producer: {},
   cart: localStorageCart(),
   totalCartQuantity: localStorageCartQuantity(),

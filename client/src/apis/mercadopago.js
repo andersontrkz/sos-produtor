@@ -27,8 +27,9 @@ export const getTransaction = async () => {
     headers,
     body: dataString,
   };
+  console.log(options);
 
-  console.log(await axios.post(URL, options, headers));
+  // console.log(await axios.post(URL, options, headers));
 };
 
 getTransaction();

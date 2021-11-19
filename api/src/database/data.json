@@ -5,8 +5,8 @@
     "cost": 5,
     "rate": 4,
     "location": {
-      "latitude": -23.561684,
-      "longitude": -46.625378
+      "lat": -25.4110303,
+      "lng": -51.5862526
     },
     "benefits": {
       "discount": false,
@@ -70,6 +70,81 @@
           "discount": false,
           "free_delivery": true,
           "new": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "Sebastião Dalí",
+    "image": "https://www.dtnpf.com/mydtn-public-core-portlet/servlet/GetStoredImage?category=CMS&symbolicName=firstgen-by-joel-reichenberger.jpg",
+    "cost": 5,
+    "rate": 4,
+    "location": {
+      "lat": -25.5110303,
+      "lng": -51.4862526
+    },
+    "benefits": {
+      "discount": false,
+      "free_delivery": false,
+      "new": true,
+      "offer": false
+    },
+    "products": [
+      {
+        "name": "Queijo Fazenda - Damasco e Avelã",
+        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_de_damasco_e_nozes_37_1_20190207211614.png",
+        "price": 30,
+        "rate": 4.5,
+        "measurement": {
+          "amount": "700",
+          "unit": "g"
+        },
+        "benefits": {
+          "discount": "-5%",
+          "free_delivery": false,
+          "new": true
+        }
+      },{
+        "name": "Queijo Fazenda - Cheddar",
+        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_de_cheddar_35_1_20190207211600.png",
+        "price": 30,
+        "rate": 2,
+        "measurement": {
+          "amount": "700",
+          "unit": "g"
+        },
+        "benefits": {
+          "discount": "-5%",
+          "free_delivery": false,
+          "new": false
+        }
+      },{
+        "name": "Queijo Fzenda - Tradicional",
+        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_tradicional_29_1_20190207210024.png",
+        "price": 25,
+        "rate": 3,
+        "measurement": {
+          "amount": "500",
+          "unit": "g"
+        },
+        "benefits": {
+          "discount": "-10%",
+          "free_delivery": false,
+          "new": false
+        }
+      },{
+        "name": "Doce de Leite - Tradicional",
+        "image": "http://2.bp.blogspot.com/-sCD24ONKIrA/UfBuGI09rGI/AAAAAAAAABc/s4bAj914ofA/s1600/linha-pastosos.png",
+        "price": 20,
+        "rate": 5,
+        "measurement": {
+          "amount": "680",
+          "unit": "g"
+        },
+        "benefits": {
+          "discount": false,
+          "free_delivery": false,
+          "new": false
         }
       }
     ]

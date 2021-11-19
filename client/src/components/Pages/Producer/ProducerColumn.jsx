@@ -7,6 +7,8 @@ import { MdOutlineGrade, MdGrade } from 'react-icons/md';
 import { RiMoneyDollarCircleLine, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { BsFillGeoAltFill } from 'react-icons/bs';
 
+import { getGeolocation, calculateGeolocationDistance } from '../../../utils/geolocation';
+
 const Producer = ({
   producer: {
     name, rate, cost, benefits, image, location: producerLocation,
@@ -27,26 +29,8 @@ const Producer = ({
     return array;
   };
 
-  // eslint-disable-next-line no-unused-vars
-  function calc(lat1, lon1, lat2, lon2) {
-    const R = 6371;
-    const dLat = (lat2 - lat1) * (Math.PI / 180);
-    const dLon = (lon2 - lon1) * (Math.PI / 180);
-
-    // eslint-disable-next-line max-len
-    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const d = R * c;
-
-    return d.toFixed(2);
-  }
-
-  function getGeolocation() {
-    navigator.geolocation.getCurrentPosition((location) => setGeolocation(location.coords));
-  }
-
   useEffect(() => {
-    getGeolocation();
+    getGeolocation(setGeolocation);
   }, []);
 
   const generateProducerBenefits = () => (
@@ -88,7 +72,7 @@ const Producer = ({
         {geolocation && (
           <Flex my={1} fontSize="larger" alignItems="center">
             <BsFillGeoAltFill />
-            {` ${calc(geolocation.latitude, geolocation.longitude, producerLocation.latitude, producerLocation.longitude)} Km`}
+            {` ${calculateGeolocationDistance(geolocation.lat, geolocation.lng, producerLocation.lat, producerLocation.lng)} Km`}
           </Flex>
         ) }
         {generateProducerBenefits()}
