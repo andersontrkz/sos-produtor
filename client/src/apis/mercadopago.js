@@ -15,16 +15,16 @@ export const createTransaction = async () => {
       ],
       marketplace_fee: 2.56,
       payer: {
-        name: 'João',
-        surname: 'Silva',
-        email: 'user@email.com',
+        name: '',
+        surname: '',
+        email: '',
         phone: {
-          area_code: '11',
-          number: '4444-4444',
+          area_code: '',
+          number: '',
         },
         identification: {
           type: 'CPF',
-          number: '19119119100',
+          number: '',
         },
         address: {
           street_name: '',
