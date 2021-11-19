@@ -1,15 +1,18 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, GridItem, Text, Input, Flex,
+  Grid, GridItem, Text, Input, Flex, Button,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { BsCashCoin, BsTruck } from 'react-icons/bs';
+import MercadoPagoCheckout from 'react-mercadopago-checkout';
+import { createTransaction } from '../../../apis/mercadopago';
 
 const Form = ({
-  transaction, setTransaction, finalizeTransaction,
+  transaction, setTransaction,
 }) => {
+  const [preferenceId, setPreferenceId] = useState();
   const { totalCartPrice } = useSelector((state) => state.shop);
 
   const setTransactionPayerAddress = ({ id, value }) => {
@@ -50,6 +53,11 @@ const Form = ({
         },
       },
     );
+  };
+
+  const generateTransactionToken = async () => {
+    const token = await createTransaction(transaction);
+    setPreferenceId(token);
   };
 
   return (
@@ -245,14 +253,14 @@ const Form = ({
           <Text fontWeight="bold">{`R$ ${totalCartPrice}`}</Text>
         </Flex>
       </GridItem>
-      <GridItem colSpan={12} onClick={finalizeTransaction}>
-        <section
-          tabIndex={0}
-          role="button"
-          onKeyPress={finalizeTransaction}
-          onClick={finalizeTransaction}
-          className="mercadopago-action-button"
+      <GridItem colSpan={12}>
+        <Button onClick={generateTransactionToken}>Modal</Button>
+        { preferenceId && (
+        <MercadoPagoCheckout
+          publicKey="TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0"
+          preferenceId={preferenceId}
         />
+        )}
       </GridItem>
     </Grid>
   );

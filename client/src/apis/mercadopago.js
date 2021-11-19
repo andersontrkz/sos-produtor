@@ -5,7 +5,6 @@ const URL = 'http://localhost:3001/transaction';
 export const createTransaction = async (transaction) => {
   if (transaction) {
     const request = await axios.post(URL, { transaction });
-
     return request.data.id;
   }
   return false;

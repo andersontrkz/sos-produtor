@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 // import underscore from 'underscore';
 import { Grid, GridItem, Text } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { useMercadopago } from 'react-sdk-mercadopago';
 import { BsCart3 } from 'react-icons/bs';
+import { useMercadopago } from 'react-sdk-mercadopago';
 
-import { createTransaction } from '../../../apis/mercadopago';
 import Layout from '../../Layout/Layout';
 import Form from './Form';
 import Cart from './Cart';
@@ -62,10 +61,6 @@ const Checkout = () => {
   //   return result;
   // };
 
-  const mercadopago = useMercadopago.v2('TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0', {
-    locale: 'pt-BR',
-  });
-
   const [transaction, setTransaction] = useState({
     marketplace_fee: 2.56,
     items: [],
@@ -98,27 +93,9 @@ const Checkout = () => {
     auto_return: 'approved',
   });
 
-  const generateTransaction = (token) => {
-    if (mercadopago) {
-      mercadopago.checkout({
-        preference: {
-          id: token,
-        },
-        render: {
-          container: '.mercadopago-action-button',
-          type: 'wallet',
-          label: 'Finalizar Compra',
-          theme: {
-            headerColor: 'red', // Dark color
-          },
-        },
-      });
-    }
-  };
-
-  useEffect(() => {
-    generateTransaction();
-  }, [mercadopago]);
+  const mercadopago = useMercadopago.v2('TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0', {
+    locale: 'pt-BR',
+  });
 
   const setShippingProperties = (key, value) => {
     setTransaction({
@@ -128,11 +105,6 @@ const Checkout = () => {
         [key]: value,
       },
     });
-  };
-
-  const finalizeTransaction = async () => {
-    const token = await createTransaction(transaction);
-    generateTransaction(token);
   };
 
   const setTransactionItems = () => {
@@ -154,7 +126,6 @@ const Checkout = () => {
 
   return (
     <Layout>
-      <Text onClick={finalizeTransaction}>Teste</Text>
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
         { cart.length ? (
           <GridItem rowSpan={11} colSpan={1} py={8} px={16}>
@@ -162,7 +133,7 @@ const Checkout = () => {
               setShippingProperties={setShippingProperties}
               transaction={transaction}
               setTransaction={setTransaction}
-              finalizeTransaction={finalizeTransaction}
+              mercadopago={mercadopago}
             />
           </GridItem>
         ) : false}
