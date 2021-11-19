@@ -96,8 +96,8 @@ CartItem.propTypes = {
   product: PropTypes.shape({
     _id: PropTypes.string,
     name: PropTypes.string,
-    price: PropTypes.string,
-    quantity: PropTypes.string,
+    price: PropTypes.number,
+    quantity: PropTypes.number,
     measurement: PropTypes.shape(),
     image: PropTypes.string,
   }).isRequired,

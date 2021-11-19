@@ -106,7 +106,7 @@ const Checkout = () => {
   });
 
   const generateTrasnaction = async () => {
-    const token = await createTransaction(transaction);
+    const token = await createTransaction();
     if (mercadopago) {
       mercadopago.checkout({
         preference: {

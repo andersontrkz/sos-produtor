@@ -253,10 +253,10 @@ const Form = ({
   );
 };
 
-Form.propTypes = {
-  transaction: PropTypes.shape().isRequired,
-  setTransaction: PropTypes.shape().isRequired,
-  finalizeTransaction: PropTypes.shape().isRequired,
-};
+Form.propTypes = ({
+  transaction: PropTypes.shape(),
+  setTransaction: PropTypes.shape({}),
+  finalizeTransaction: PropTypes.shape(),
+}).isRequired;
 
 export default Form;

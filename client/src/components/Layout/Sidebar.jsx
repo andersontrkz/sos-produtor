@@ -46,9 +46,9 @@ const Sidebar = ({ isOpen, onClose }) => {
   );
 };
 
-Sidebar.propTypes = {
-  isOpen: PropTypes.oneOfType().isRequired,
-  onClose: PropTypes.oneOfType().isRequired,
-};
+Sidebar.propTypes = ({
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.bool,
+}).isRequired;
 
 export default Sidebar;

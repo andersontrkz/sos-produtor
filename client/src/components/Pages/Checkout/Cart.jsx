@@ -17,7 +17,7 @@ const Cart = () => {
     <main>
       {cart.length ? (
         <Box px={2} p={2} mt={3} borderRadius="8px" border="1px solid rgba(50, 200, 100, 0.2)" overflowY="auto" maxH="70vh">
-          {cart.map((product, index) => <CartItem product={product} index={index} />)}
+          {cart.map((product) => <CartItem key={product._id} product={product} />)}
         </Box>
       ) : (
         <Flex direction="column" justifyContent="center">

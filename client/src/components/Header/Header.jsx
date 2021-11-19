@@ -36,7 +36,7 @@ const Header = ({ onOpen }) => {
 };
 
 Header.propTypes = {
-  onOpen: PropTypes.oneOfType([]).isRequired,
+  onOpen: PropTypes.func.isRequired,
 };
 
 export default Header;
