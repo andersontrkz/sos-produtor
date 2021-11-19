@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import underscore from 'underscore';
+// import underscore from 'underscore';
 import { Grid, GridItem, Text } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { useMercadopago } from 'react-sdk-mercadopago';
@@ -12,63 +12,117 @@ import Cart from './Cart';
 
 const Checkout = () => {
   const {
-    cart, totalCartQuantity, totalCartPrice, transactionFee, defaultSeller,
+    cart, totalCartQuantity, totalCartPrice,
   } = useSelector((state) => state.shop);
 
-  const generateSevenDaysDate = () => {
-    const date = new Date();
-    date.setDate(date.getDate() + 7);
+  // const generateSevenDaysDate = () => {
+  //   const date = new Date();
+  //   date.setDate(date.getDate() + 7);
 
-    return date;
-  };
+  //   return date;
+  // };
 
-  const totals = cart.reduce((total, product) => total + product.price, 0);
+  // const totals = cart.reduce((total, product) => total + product.price, 0);
 
-  const generateSplitRules = () => {
-    const productsByProducer = underscore.groupBy(
-      cart,
-      // eslint-disable-next-line no-underscore-dangle
-      (product) => product.producer_id.seller_id,
-    );
-    const result = [];
+  // const generateSplitRules = () => {
+  //   const productsByProducer = underscore.groupBy(
+  //     cart,
+  //     // eslint-disable-next-line no-underscore-dangle
+  //     (product) => product.producer_id.seller_id,
+  //   );
+  //   const result = [];
 
-    Object.keys(productsByProducer).forEach((producer) => {
-      const products = productsByProducer[producer];
+  //   Object.keys(productsByProducer).forEach((producer) => {
+  //     const products = productsByProducer[producer];
 
-      const totalValuePerProducer = products
-        .reduce((total, product) => total + product.price, 0)
-        .toFixed(2);
+  //     const totalValuePerProducer = products
+  //       .reduce((total, product) => total + product.price, 0)
+  //       .toFixed(2);
 
-      const totalFee = (totalValuePerProducer * transactionFee).toFixed(2);
+  //     const totalFee = (totalValuePerProducer * transactionFee).toFixed(2);
 
-      result.push({
-        // eslint-disable-next-line no-underscore-dangle
-        seller_id: products[0].producer_id.seller_id,
-        percentage: Math.floor(
-          ((totalValuePerProducer - totalFee) / totals) * 100,
-        ),
-        liable: true,
-        charge_processing_fee: true,
-      });
-    });
+  //     result.push({
+  //       // eslint-disable-next-line no-underscore-dangle
+  //       seller_id: products[0].producer_id.seller_id,
+  //       percentage: Math.floor(
+  //         ((totalValuePerProducer - totalFee) / totals) * 100,
+  //       ),
+  //       liable: true,
+  //       charge_processing_fee: true,
+  //     });
+  //   });
 
-    const totalProducersPercentage = result
-      .reduce((acc, recipient) => acc + parseFloat(recipient.percentage), 0);
+  //   const totalProducersPercentage = result
+  //     .reduce((acc, recipient) => acc + parseFloat(recipient.percentage), 0);
 
-    result.push({
-      ...defaultSeller,
-      percentage: 100 - totalProducersPercentage,
-    });
+  //   result.push({
+  //     ...defaultSeller,
+  //     percentage: 100 - totalProducersPercentage,
+  //   });
 
-    return result;
-  };
+  //   return result;
+  // };
 
   const mercadopago = useMercadopago.v2('TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0', {
     locale: 'pt-BR',
   });
 
+  const [transaction, setTransaction] = useState({
+    items: [
+      {
+        title: 'Meu produto',
+        quantity: 1,
+        unit_price: 75.76,
+      },
+    ],
+    marketplace_fee: 2.56,
+    payer: {
+      name: 'João',
+      surname: 'Silva',
+      email: 'user@email.com',
+      phone: {
+        area_code: '11',
+        number: '4444-4444',
+      },
+      identification: {
+        type: 'CPF',
+        number: '19119119100',
+      },
+      address: {
+        street_name: 'Street',
+        street_number: 123,
+        zip_code: '06233200',
+      },
+    },
+    back_urls: {
+      success: 'https://www.success.com',
+      failure: 'http://www.failure.com',
+      pending: 'http://www.pending.com',
+    },
+    auto_return: 'approved',
+    payment_methods: {
+      excluded_payment_methods: [
+        {
+          id: 'master',
+        },
+      ],
+      excluded_payment_types: [
+        {
+          id: 'ticket',
+        },
+      ],
+      installments: 12,
+    },
+    notification_url: 'https://www.your-site.com/ipn',
+    statement_descriptor: 'MEUNEGOCIO',
+    external_reference: 'Reference_1234',
+    expires: true,
+    expiration_date_from: '2016-02-01T12:00:00.000-04:00',
+    expiration_date_to: '2016-02-28T12:00:00.000-04:00',
+  });
+
   const generateTrasnaction = async () => {
-    const token = await createTransaction();
+    const token = await createTransaction(transaction);
     if (mercadopago) {
       mercadopago.checkout({
         preference: {
@@ -90,46 +144,18 @@ const Checkout = () => {
     generateTrasnaction();
   }, [mercadopago]);
 
-  const [transaction, setTransaction] = useState({
-    amount: 0,
-    card_number: '',
-    card_cvv: '',
-    card_expiration_date: '',
-    card_holder_name: '',
-    shipping: {
-      name: 'SOS Produtor',
-      fee: 1000,
-      delivery_date: generateSevenDaysDate(),
-      expedited: true,
-      address: {
-        country: 'br',
-        state: '',
-        city: '',
-        neighborhood: '',
-        street: '',
-        street_number: '',
-        zipcode: '',
-      },
-    },
-    items: [],
-    split_rules: generateSplitRules(),
-  });
-
   const setShippingProperties = (key, value) => {
     setTransaction({
       ...transaction,
-      shipping: {
-        ...transaction.shipping,
-        address: {
-          ...transaction.shipping.address,
-          [key]: value,
-        },
+      payer: {
+        ...transaction.payer,
+        [key]: value,
       },
     });
   };
 
   const finalizeTransaction = () => {
-    // createTransaction();
+    console.log('oi');
   };
 
   useEffect(() => {

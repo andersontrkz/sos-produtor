@@ -5,12 +5,21 @@ import {
   Grid, GridItem, Text, Input, Flex,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { BsCashCoin, BsTruck } from 'react-icons/bs';
+import { BsTruck } from 'react-icons/bs';
 
 const Form = ({
-  setShippingProperties, transaction, setTransaction, finalizeTransaction,
+  transaction, setTransaction, finalizeTransaction,
 }) => {
   const { totalCartPrice } = useSelector((state) => state.shop);
+
+  const setTransactionPayerAddress = ({ id, value }) => {
+    setTransaction(
+      {
+        ...transaction,
+        payer: { ...transaction.payer, address: { ...transaction.payer.address, [id]: value } },
+      },
+    );
+  };
 
   return (
     <Grid templateColumns="repeat(12, 1fr)" gap={4}>
@@ -29,6 +38,7 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={12}>
         <Input
+          id="street_name"
           placeholder="Logradouro"
           bg="gray.100"
           border={0}
@@ -36,11 +46,12 @@ const Form = ({
           _placeholder={{
             color: 'gray.500',
           }}
-          onChange={({ target }) => setShippingProperties('street', target.value)}
+          onChange={({ target }) => setTransactionPayerAddress(target)}
         />
       </GridItem>
       <GridItem colSpan={4}>
         <Input
+          id="street_number"
           placeholder="Número"
           bg="gray.100"
           border={0}
@@ -48,11 +59,12 @@ const Form = ({
           _placeholder={{
             color: 'gray.500',
           }}
-          onChange={({ target }) => setShippingProperties('street_number', target.value)}
+          onChange={({ target }) => setTransactionPayerAddress(target)}
         />
       </GridItem>
       <GridItem colSpan={8}>
         <Input
+          id="neighborhood"
           placeholder="Bairro"
           bg="gray.100"
           border={0}
@@ -60,11 +72,12 @@ const Form = ({
           _placeholder={{
             color: 'gray.500',
           }}
-          onChange={({ target }) => setShippingProperties('neighborhood', target.value)}
+          onChange={({ target }) => setTransactionPayerAddress(target)}
         />
       </GridItem>
       <GridItem colSpan={6}>
         <Input
+          id="city"
           placeholder="Cidade"
           bg="gray.100"
           border={0}
@@ -72,11 +85,12 @@ const Form = ({
           _placeholder={{
             color: 'gray.500',
           }}
-          onChange={({ target }) => setShippingProperties('city', target.value)}
+          onChange={({ target }) => setTransactionPayerAddress(target)}
         />
       </GridItem>
       <GridItem colSpan={2}>
         <Input
+          id="uf"
           placeholder="UF"
           bg="gray.100"
           border={0}
@@ -84,11 +98,12 @@ const Form = ({
           _placeholder={{
             color: 'gray.500',
           }}
-          onChange={({ target }) => setShippingProperties('state', target.value)}
+          onChange={({ target }) => setTransactionPayerAddress(target)}
         />
       </GridItem>
       <GridItem colSpan={4}>
         <Input
+          id="zip_code"
           colSpan={11}
           placeholder="CEP"
           bg="gray.100"
@@ -97,69 +112,7 @@ const Form = ({
           _placeholder={{
             color: 'gray.500',
           }}
-          onChange={({ target }) => setShippingProperties('zipcode', target.value)}
-        />
-      </GridItem>
-      <br />
-      <GridItem colSpan={12}>
-        <Text
-          pb={1}
-          w="max-content"
-          borderBottom="2px solid var(--primary-color)"
-          fontWeight={600}
-          display="flex"
-          alignItems="center"
-        >
-          <BsCashCoin style={{ marginRight: '8px' }} />
-          Dados de Pagamento
-        </Text>
-      </GridItem>
-      <GridItem colSpan={12}>
-        <Input
-          placeholder="Títular do Cartão"
-          bg="gray.100"
-          border={0}
-          color="gray.500"
-          _placeholder={{
-            color: 'gray.500',
-          }}
-          onChange={(e) => setTransaction({ ...transaction, card_holder_name: e.target.value })}
-        />
-      </GridItem>
-      <GridItem colSpan={6}>
-        <Input
-          placeholder="Número do Cartão"
-          bg="gray.100"
-          border={0}
-          color="gray.500"
-          _placeholder={{
-            color: 'gray.500',
-          }}
-          onChange={(e) => setTransaction({ ...transaction, card_number: e.target.value })}
-        />
-      </GridItem>
-      <GridItem colSpan={4}>
-        <Input
-          placeholder="Validade"
-          bg="gray.100"
-          border={0}
-          color="gray.500"
-          _placeholder={{
-            color: 'gray.500',
-          }}
-          onChange={(e) => setTransaction({ ...transaction, card_expiration_date: e.target.value })}
-        />
-      </GridItem>
-      <GridItem colSpan={2}>
-        <Input
-          placeholder="CVV"
-          bg="gray.100"
-          border={0}
-          color="gray.500"
-          _placeholder={{
-            color: 'gray.500',
-          }}
-          onChange={(e) => setTransaction({ ...transaction, card_cvv: e.target.value })}
+          onChange={({ target }) => setTransactionPayerAddress(target)}
         />
       </GridItem>
       <br />
@@ -174,6 +127,7 @@ const Form = ({
           tabIndex={0}
           role="button"
           onKeyPress={() => finalizeTransaction()}
+          onClick={() => finalizeTransaction()}
           className="mercadopago-action-button"
         />
       </GridItem>
@@ -182,7 +136,6 @@ const Form = ({
 };
 
 Form.propTypes = {
-  setShippingProperties: PropTypes.shape().isRequired,
   transaction: PropTypes.shape().isRequired,
   setTransaction: PropTypes.shape().isRequired,
   finalizeTransaction: PropTypes.shape().isRequired,
