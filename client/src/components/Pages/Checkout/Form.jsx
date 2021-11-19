@@ -257,7 +257,7 @@ const Form = ({
         <Button onClick={generateTransactionToken}>Modal</Button>
         { preferenceId && (
         <MercadoPagoCheckout
-          publicKey="TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0"
+          publicKey={process.env.MERCADOPAGO_PUBLIC_KEY}
           preferenceId={preferenceId}
         />
         )}

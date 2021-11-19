@@ -66,10 +66,12 @@ const ProducerCard = ({
           <GridItem>
             <Text p={1} fontSize="xs" display="flex" alignItems="center" color="var(--tertiary-color)">{generateProducerStats(rate, <MdGrade />, <MdOutlineGrade />)}</Text>
           </GridItem>
+          { geolocation && (
           <GridItem rowSpan={2} display="flex" fontSize="xs" alignItems="center">
             <BsFillGeoAltFill style={{ marginRight: '4px' }} />
             {` ${calculateGeolocationDistance(geolocation.lat, geolocation.lng, producerLocation.lat, producerLocation.lng)} Km`}
           </GridItem>
+          )}
           <GridItem>
             <Text p={1} fontSize="xs" display="flex" alignItems="center" color="var(--secondary-color)">{generateProducerStats(cost, <RiMoneyDollarCircleFill />, <RiMoneyDollarCircleLine />)}</Text>
           </GridItem>

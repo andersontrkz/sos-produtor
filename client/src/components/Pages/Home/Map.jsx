@@ -25,7 +25,8 @@ const Map = ({ producers }) => {
       {producers.map((producer) => (
         <MapMarker producer={producer} lat={producer.location.lat} lng={producer.location.lng} />
       ))}
-      <ClientMapMarker lat={geolocation.lat} lng={geolocation.lng} />
+      {geolocation
+      && <ClientMapMarker lat={geolocation.lat} lng={geolocation.lng} />}
     </GoogleMapReact>
   );
 };
