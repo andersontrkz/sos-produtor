@@ -26,8 +26,18 @@ export function* requestLoginAction(payload) {
   yield put(setLoginAction(response));
 }
 
+export function* postProductAction(payload) {
+  console.log('payload');
+  console.log(payload);
+  const request = yield call(api.post, '/product', payload.product);
+  const response = request.data;
+
+  console.log(response);
+}
+
 export default all([
   takeLatest(types.REQUEST_PRODUCERS, requestProducers),
   takeLatest(types.REQUEST_PRODUCER, requestProducer),
   takeLatest(types.REQUEST_LOGIN, requestLoginAction),
+  takeLatest(types.POST_PRODUCT, postProductAction),
 ]);

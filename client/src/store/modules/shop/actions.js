@@ -24,3 +24,6 @@ export const requestLoginAction = (login) => (
 
 export const setLoginAction = (login) => (
   { type: types.SET_LOGIN, login });
+
+export const postProductAction = (product) => (
+  { type: types.POST_PRODUCT, product });

@@ -10,9 +10,8 @@ const product = new Schema({
   name: String,
   image: String,
   price: Number,
-  rate: Number,
   measurement: Object,
-  benefits: Object,
+  free_delivery: Boolean,
 });
 
 module.exports = mongoose.model('Product', product);

@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal, ModalOverlay, ModalContent, GridItem, Input,
   ModalCloseButton, ModalBody, Button, Grid, Text,
 } from '@chakra-ui/react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { requestLoginAction } from '../../store/modules/shop/actions';
 
 const LoginModal = ({ isOpen, onClose }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { login: loginStore } = useSelector((state) => state.shop);
+  const [redirect, setRedirect] = useState(false);
 
   const [login, setLogin] = useState({
     email: '',
@@ -21,6 +23,17 @@ const LoginModal = ({ isOpen, onClose }) => {
   const handleInput = ({ id, value }) => {
     setLogin({ ...login, [id]: value });
   };
+
+  const loginRedirect = () => {
+    setRedirect(true);
+    dispatch(requestLoginAction(login));
+  };
+
+  useEffect(() => {
+    if (loginStore._id && redirect) {
+      history.push('/dashboard');
+    }
+  }, [loginStore]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -53,7 +66,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                   backgroundColor: 'var(--tertiary-color)',
                   transition: '.9s',
                 }}
-                onClick={() => dispatch(requestLoginAction(login))}
+                onClick={loginRedirect}
               >
                 Entrar
               </Button>

@@ -9,6 +9,7 @@ const types = {
   HANDLE_PRODUCT_CART: '@shop/HANDLE_PRODUCT_CART',
   REQUEST_LOGIN: '@shop/REQUEST_LOGIN',
   SET_LOGIN: '@shop/SET_LOGIN',
+  POST_PRODUCT: '@shop/POST_PRODUCT',
 };
 
 export default types;
