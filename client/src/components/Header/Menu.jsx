@@ -1,54 +1,53 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Button, Menu as ChakraMenu, MenuButton, MenuList, MenuItem,
+  Button, Menu as ChakraMenu, MenuButton, MenuList, MenuItem, useDisclosure,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { FaUserCircle, FaRegUser } from 'react-icons/fa';
-import { BsCart3, BsClipboardData } from 'react-icons/bs';
-// import { useHistory } from 'react-router-dom';
+import { BsClipboardData } from 'react-icons/bs';
 
-const Menu = ({ cartOpenModal }) => {
-  const { customer, totalCartQuantity } = useSelector((state) => state.shop);
-  // const history = useHistory();
+import LoginModal from './LoginModal';
+
+const Menu = () => {
+  const { customer } = useSelector((state) => state.shop);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <ChakraMenu>
       <MenuButton
         as={Button}
         position="absolute"
-        right="20"
+        left="20"
         bg="var(--tertiary-color)"
         color="white"
         transition=".9s"
         fontSize="sm"
+        size="sm"
         rightIcon={customer.name && <MdKeyboardArrowDown />}
         leftIcon={<FaUserCircle />}
         _hover={{ backgroundColor: 'var(--quaternary-color)' }}
+        onClick={onOpen}
       >
-        { customer.name ? customer.name.split(' ')[0] : 'Login' }
+        { customer.name ? customer.name.split(' ')[0] : 'Sou Produtor' }
       </MenuButton>
       <MenuList>
         <MenuItem>
           <FaRegUser style={{ marginRight: '12px', marginBottom: '1px' }} />
-          Meus Dados
+          Login
         </MenuItem>
-        <MenuItem onClick={cartOpenModal}>
-          <BsCart3 style={{ marginRight: '12px', marginBottom: '1px' }} />
-          {`Meu Carrinho (${totalCartQuantity})`}
+        <MenuItem>
+          <FaRegUser style={{ marginRight: '12px', marginBottom: '1px' }} />
+          Meus Dados
         </MenuItem>
         <MenuItem>
           <BsClipboardData style={{ marginRight: '12px', marginBottom: '1px' }} />
           Minhas Compras
         </MenuItem>
       </MenuList>
+      <LoginModal isOpen={isOpen} onClose={onClose} />
     </ChakraMenu>
   );
-};
-
-Menu.propTypes = {
-  cartOpenModal: PropTypes.func.isRequired,
 };
 
 export default Menu;

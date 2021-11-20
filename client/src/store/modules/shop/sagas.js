@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import types from './types';
 import api from '../../../apis/sos-produtor';
-import { setProducersAction, setProducerAction } from './actions';
+import { setProducersAction, setProducerAction, setLoginAction } from './actions';
 
 export function* requestProducers() {
   const request = yield call(api.get, '/producer');
@@ -19,7 +19,15 @@ export function* requestProducer(payload) {
   yield put(setProducerAction(response));
 }
 
+export function* requestLoginAction(payload) {
+  const request = yield call(api.post, '/login', payload.login);
+  const response = request.data;
+
+  yield put(setLoginAction(response));
+}
+
 export default all([
   takeLatest(types.REQUEST_PRODUCERS, requestProducers),
   takeLatest(types.REQUEST_PRODUCER, requestProducer),
+  takeLatest(types.REQUEST_LOGIN, requestLoginAction),
 ]);

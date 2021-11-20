@@ -2,6 +2,7 @@ import produce from 'immer';
 
 import types from './types';
 import { localStorageCart, localStorageCartPrice, localStorageCartQuantity } from '../../../localStorage/cart';
+import sessionStorageLogin from '../../../localStorage/login';
 
 const INITIAL_STATE = {
   customer: {},
@@ -18,6 +19,7 @@ const INITIAL_STATE = {
     percentage: 10,
     liable: true,
   },
+  login: sessionStorageLogin(),
 };
 
 const changeProductCartQuantity = (id, quantity, cart) => cart.map((product) => {
@@ -109,6 +111,15 @@ const shop = (state = INITIAL_STATE, action) => {
         draft.totalCartQuantity = draft.cart.reduce((acc, item) => acc + item.quantity, 0);
         draft.totalCartPrice = (
           draft.cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)).toFixed(2);
+      });
+    }
+
+    case types.SET_LOGIN: {
+      return produce(state, (draft) => {
+        if (action.login._id) {
+          draft.login = action.login;
+          sessionStorage.setItem('SOS_PRODUTOR_LOGIN', JSON.stringify(draft.login));
+        }
       });
     }
 

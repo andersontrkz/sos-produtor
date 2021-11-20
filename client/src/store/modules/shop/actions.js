@@ -18,3 +18,9 @@ export const setProducerAction = (producer) => ({ type: types.SET_PRODUCER, prod
 
 export const handleProductCartAction = (product, quantity) => (
   { type: types.HANDLE_PRODUCT_CART, product, quantity });
+
+export const requestLoginAction = (login) => (
+  { type: types.REQUEST_LOGIN, login });
+
+export const setLoginAction = (login) => (
+  { type: types.SET_LOGIN, login });
