@@ -1,21 +1,28 @@
 import React from 'react';
-import {
-  Button, Menu as ChakraMenu, MenuButton, MenuList, MenuItem, useDisclosure,
-} from '@chakra-ui/react';
+import { useHistory } from 'react-router-dom';
+import { Button, useDisclosure } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { FaUserCircle, FaRegUser } from 'react-icons/fa';
-import { BsClipboardData } from 'react-icons/bs';
+import { MdKeyboardArrowRight } from 'react-icons/md';
+import { FaUserCircle } from 'react-icons/fa';
 
 import LoginModal from './LoginModal';
 
 const Menu = () => {
-  const { customer } = useSelector((state) => state.shop);
+  const { login } = useSelector((state) => state.shop);
+  const history = useHistory();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const handleButtonClick = () => {
+    if (login._id) {
+      history.push('/dashboard');
+    } else {
+      onOpen();
+    }
+  };
+
   return (
-    <ChakraMenu>
-      <MenuButton
+    <>
+      <Button
         as={Button}
         position="absolute"
         left="20"
@@ -24,29 +31,15 @@ const Menu = () => {
         transition=".9s"
         fontSize="sm"
         size="sm"
-        rightIcon={customer.name && <MdKeyboardArrowDown />}
+        rightIcon={login.name && <MdKeyboardArrowRight />}
         leftIcon={<FaUserCircle />}
         _hover={{ backgroundColor: 'var(--quaternary-color)' }}
-        onClick={onOpen}
+        onClick={handleButtonClick}
       >
-        { customer.name ? customer.name.split(' ')[0] : 'Sou Produtor' }
-      </MenuButton>
-      <MenuList>
-        <MenuItem>
-          <FaRegUser style={{ marginRight: '12px', marginBottom: '1px' }} />
-          Login
-        </MenuItem>
-        <MenuItem>
-          <FaRegUser style={{ marginRight: '12px', marginBottom: '1px' }} />
-          Meus Dados
-        </MenuItem>
-        <MenuItem>
-          <BsClipboardData style={{ marginRight: '12px', marginBottom: '1px' }} />
-          Minhas Compras
-        </MenuItem>
-      </MenuList>
+        { login._id ? 'Dashboard' : 'Sou Produtor' }
+      </Button>
       <LoginModal isOpen={isOpen} onClose={onClose} />
-    </ChakraMenu>
+    </>
   );
 };
 
