@@ -10,6 +10,7 @@ const types = {
   REQUEST_LOGIN: '@shop/REQUEST_LOGIN',
   SET_LOGIN: '@shop/SET_LOGIN',
   POST_PRODUCT: '@shop/POST_PRODUCT',
+  DELETE_PRODUCT: '@shop/DELETE_PRODUCT',
 };
 
 export default types;

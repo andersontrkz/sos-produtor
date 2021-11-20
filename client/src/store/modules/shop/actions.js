@@ -27,3 +27,6 @@ export const setLoginAction = (login) => (
 
 export const postProductAction = (product) => (
   { type: types.POST_PRODUCT, product });
+
+export const deleteProductAction = (id) => (
+  { type: types.DELETE_PRODUCT, id });

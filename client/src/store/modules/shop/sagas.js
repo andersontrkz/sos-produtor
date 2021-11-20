@@ -27,9 +27,16 @@ export function* requestLoginAction(payload) {
 }
 
 export function* postProductAction(payload) {
+  const request = yield call(api.post, '/product', payload.product);
+  const response = request.data;
+
+  console.log(response);
+}
+
+export function* deleteProductAction(payload) {
   console.log('payload');
   console.log(payload);
-  const request = yield call(api.post, '/product', payload.product);
+  const request = yield call(api.delete, `/product/${payload.id}`);
   const response = request.data;
 
   console.log(response);
@@ -40,4 +47,5 @@ export default all([
   takeLatest(types.REQUEST_PRODUCER, requestProducer),
   takeLatest(types.REQUEST_LOGIN, requestLoginAction),
   takeLatest(types.POST_PRODUCT, postProductAction),
+  takeLatest(types.DELETE_PRODUCT, deleteProductAction),
 ]);

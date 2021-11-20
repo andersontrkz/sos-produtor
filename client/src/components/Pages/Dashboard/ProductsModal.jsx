@@ -2,16 +2,26 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal, Button, ModalOverlay, ModalContent, ModalHeader, Tr, Th, Tbody, Td,
-  ModalBody, ModalFooter, ModalCloseButton, Table, TableCaption, Thead, Tfoot,
+  ModalBody, ModalFooter, ModalCloseButton, Table, TableCaption, Thead, Image,
 } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RiDeleteBin5Fill } from 'react-icons/ri';
+
+import { requestProducerAction, deleteProductAction } from '../../../store/modules/shop/actions';
 
 const ProductsModal = ({ isOpen, onClose }) => {
-  const { login } = useSelector((state) => state.shop);
-
+  const dispatch = useDispatch();
+  const { producer, login } = useSelector((state) => state.shop);
   useEffect(() => {
-    console.log(login);
+    dispatch(requestProducerAction(login._id));
   }, []);
+
+  const deleteProduct = (id) => {
+    dispatch(deleteProductAction(id));
+    const row = document.getElementById(id);
+    row.remove();
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="full">
       <ModalOverlay />
@@ -23,66 +33,29 @@ const ProductsModal = ({ isOpen, onClose }) => {
             <TableCaption>Lista de produtos cadastrados.</TableCaption>
             <Thead>
               <Tr>
-                <Th>ID</Th>
+                <Th />
                 <Th>Nome</Th>
                 <Th isNumeric>Preço</Th>
                 <Th isNumeric>Quantidade/Unidade</Th>
+                <Th isNumeric>Frete Grátis</Th>
+                <Th>Remover</Th>
               </Tr>
             </Thead>
             <Tbody>
-              <Tr>
-                <Td>inches</Td>
-                <Td>millimetres (mm)</Td>
-                <Td isNumeric>25.4</Td>
-              </Tr>
-              <Tr>
-                <Td>feet</Td>
-                <Td>centimetres (cm)</Td>
-                <Td isNumeric>30.48</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
-              <Tr>
-                <Td>yards</Td>
-                <Td>metres (m)</Td>
-                <Td isNumeric>0.91444</Td>
-              </Tr>
+              {producer.products?.map((product) => (
+                <Tr id={product._id}>
+                  <Td><Image h={10} borderRadius="50%" src={product.image} /></Td>
+                  <Td>{product.name}</Td>
+                  <Td isNumeric>{product.price.toFixed(2)}</Td>
+                  <Td isNumeric>
+                    {product.measurement.amount}
+                    {product.measurement.unit}
+                  </Td>
+                  <Td isNumeric>{product.free_delivery ? 'Sim' : 'Não'}</Td>
+                  <Td><Button size="sm" colorScheme="red" onClick={() => deleteProduct(product._id)}><RiDeleteBin5Fill /></Button></Td>
+                </Tr>
+              ))}
             </Tbody>
-            <Tfoot>
-              <Tr>
-                <Th>To convert</Th>
-                <Th>into</Th>
-                <Th isNumeric>multiply by</Th>
-              </Tr>
-            </Tfoot>
           </Table>
         </ModalBody>
         <ModalFooter>
