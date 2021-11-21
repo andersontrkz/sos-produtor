@@ -25,10 +25,33 @@ const LoginModal = ({ isOpen, onClose }) => {
     setLogin({ ...login, [id]: value });
   };
 
+  const validateForm = () => {
+    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi;
+
+    if (login.password === '' || login.email === '') {
+      setErrorMessage('Preencha todos os campos*');
+      return false;
+    }
+
+    if (!emailRegex.test(login.email)) {
+      setErrorMessage('Preencha um email válido*');
+      return false;
+    }
+
+    if (login.password.length < 8) {
+      setErrorMessage('A senha precisa ter pelo menos 8 caracteres*');
+      return false;
+    }
+
+    setErrorMessage('Dados incorretos, tente novamente*');
+
+    return true;
+  };
+
   const loginRedirect = () => {
     setRedirect(true);
     dispatch(requestLoginAction(login));
-    setErrorMessage('Dados incorretos, tente novamente*');
+    validateForm();
   };
 
   useEffect(() => {

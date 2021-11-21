@@ -22,7 +22,8 @@ const AddressModal = ({ isOpen, onClose }) => {
     street: '',
     number: '',
     neighborhood: '',
-    password: '',
+    lat: '',
+    lng: '',
   });
 
   const handleInput = ({ id, value }) => {
@@ -31,6 +32,7 @@ const AddressModal = ({ isOpen, onClose }) => {
 
   const getCoords = async () => {
     setIsLoading(true);
+    CepCoords.setOpcoes({ precisao: 7 });
     const coord = await CepCoords.getByCep(producer.cep);
 
     setProducer({
@@ -59,6 +61,8 @@ const AddressModal = ({ isOpen, onClose }) => {
       street: storeProducer.location?.street,
       number: storeProducer.location?.number,
       neighborhood: storeProducer.location?.neighborhood,
+      lat: storeProducer.location?.lat,
+      lng: storeProducer.location?.lng,
     });
   }, [storeProducer]);
 
@@ -88,7 +92,10 @@ const AddressModal = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Meu Endereço</ModalHeader>
+        <ModalHeader>
+          Meu Endereço
+          <Text fontWeight={400} fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }}>Seu endereço é necessário para utilizar todos os recursos do marketplace.</Text>
+        </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           { isLoading && <Flex position="absolute" zIndex="9999" top="45%" left="45%"><Spinner /></Flex>}

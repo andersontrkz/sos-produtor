@@ -27,7 +27,6 @@ const ProductsModal = ({ isOpen, onClose }) => {
   };
 
   useEffect(() => {
-    console.log(storedProducer);
     setProducer({
       name: storedProducer?.name,
       image: storedProducer?.image,
@@ -41,6 +40,7 @@ const ProductsModal = ({ isOpen, onClose }) => {
   const validateForm = () => {
     const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi;
     const nameRegex = /^[a-z ,.'-]+$/i;
+    const { seller_id: sellerId } = producer;
 
     if (producer.name === '' || producer.email === '' || producer.ddd === '' || producer.phone === '' || producer.image === '') {
       setErrorMessage('Preencha todos os campos obrigatórios*');
@@ -60,6 +60,13 @@ const ProductsModal = ({ isOpen, onClose }) => {
     if (producer.phone.length < 8) {
       setErrorMessage('Preencha um telefone válido*');
       return false;
+    }
+
+    if (sellerId !== '') {
+      if (sellerId.split('-').length !== 3 || sellerId[0] !== 'T') {
+        setErrorMessage('Preencha um token válido*');
+        return false;
+      }
     }
 
     return true;
@@ -83,7 +90,7 @@ const ProductsModal = ({ isOpen, onClose }) => {
           <Grid templateColumns="repeat(12, 1fr)" gap={4}>
             <GridItem colSpan={12}>
               Nome Completo*
-              <Input id="name" value={producer.name} placeholder="Nome Completo" onChange={({ target }) => handleInput(target)} />
+              <Input id="name" maxLength={30} value={producer.name} placeholder="Nome Completo" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={12}>
               Imagem de Perfil (URL)*
@@ -91,7 +98,7 @@ const ProductsModal = ({ isOpen, onClose }) => {
             </GridItem>
             <GridItem colSpan={12}>
               Email*
-              <Input id="email" type="email" value={producer.email} placeholder="Email" onChange={({ target }) => handleInput(target)} disabled />
+              <Input id="email" type="email" maxLength={50} value={producer.email} placeholder="Email" onChange={({ target }) => handleInput(target)} disabled />
             </GridItem>
             <GridItem colSpan={3}>
               DDD*
@@ -103,7 +110,8 @@ const ProductsModal = ({ isOpen, onClose }) => {
             </GridItem>
             <GridItem colSpan={12}>
               MercadoPago Token
-              <Input id="seller_id" value={producer.seller_id} placeholder="MercadoPago Token" onChange={({ target }) => handleInput(target)} disabled />
+              <Input id="seller_id" value={producer.seller_id} placeholder="MercadoPago Token" onChange={({ target }) => handleInput(target)} />
+              <Text fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }}>Um token válido é necessário para utilizar todos os recursos do marketplace.</Text>
             </GridItem>
             <GridItem colSpan={12}>
               {errorMessage && <Text textAlign="center" fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }}>{errorMessage}</Text>}

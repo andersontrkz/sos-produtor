@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Grid, useDisclosure } from '@chakra-ui/react';
 
@@ -24,10 +24,6 @@ const Dashboard = () => {
   const {
     isOpen: isOpenProduct, onOpen: onOpenProduct, onClose: onCloseProduct,
   } = useDisclosure();
-
-  useEffect(() => {
-    console.log(process.env.REACT_APP_MERCADOPAGO_APP_ID);
-  }, []);
 
   return (
     <Layout>

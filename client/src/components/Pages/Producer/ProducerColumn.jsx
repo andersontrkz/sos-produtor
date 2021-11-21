@@ -1,81 +1,72 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Box, Text, Image, Badge, Flex,
+  Box, Text, Image, Flex,
 } from '@chakra-ui/react';
-import { MdOutlineGrade, MdGrade } from 'react-icons/md';
-import { RiMoneyDollarCircleLine, RiMoneyDollarCircleFill } from 'react-icons/ri';
-import { BsFillGeoAltFill } from 'react-icons/bs';
+import { BsFillGeoAltFill, BsFillTelephoneFill } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
+import { FaUser } from 'react-icons/fa';
+import { SiOpenstreetmap } from 'react-icons/si';
 
 import { getGeolocation, calculateGeolocationDistance } from '../../../utils/geolocation';
 
 const Producer = ({
   producer: {
-    name, rate, cost, benefits, image, location: producerLocation,
+    name, image, phone, email, location,
   },
 }) => {
   const [geolocation, setGeolocation] = useState(false);
-
-  const generateProducerStats = (stats, activeElement, inativeElement) => {
-    const array = [];
-    for (let index = 0; index < Number(stats); index += 1) {
-      array[index] = activeElement;
-    }
-
-    for (let index = Number(stats); index < 5; index += 1) {
-      array[index] = inativeElement;
-    }
-
-    return array;
-  };
 
   useEffect(() => {
     getGeolocation(setGeolocation);
   }, []);
 
-  const generateProducerBenefits = () => (
-    <>
-      {benefits.free_delivery && (
-      <Badge my={2} py={1} px={4} fontSize="0.8em" colorScheme="whatsapp" display="flex" alignItems="center" w="fit-content">
-        Frete Grátis
-      </Badge>
-      )}
-      {benefits.new && (
-      <Badge my={2} py={1} px={4} fontSize="0.8em" colorScheme="linkedin" display="flex" alignItems="center" w="fit-content">
-        Novo
-      </Badge>
-      )}
-      {benefits.offer && (
-      <Badge my={2} py={1} px={4} fontSize="0.8em" colorScheme="yellow" display="flex" alignItems="center" w="fit-content">
-        OFERTAS
-      </Badge>
-      )}
-      {benefits.discount && (
-      <Badge my={2} py={1} px={4} fontSize="0.8em" colorScheme="red" display="flex" alignItems="center" w="fit-content">
-        {`-${benefits.discount}% OFF`}
-      </Badge>
-      )}
-    </>
-  );
-
   return (
     <Box>
       <Image w="48" h="48" objectFit="cover" src={image} borderRadius="50%" mb={4} />
-      <Text pt={1} fontWeight={600}>{name}</Text>
+      <Text pt={1} fontWeight={600} display="flex" alignItems="center">
+        <FaUser style={{ marginRight: '4px' }} />
+        {name}
+      </Text>
       <Flex fontSize="smaller" flexDirection="column">
-        <Flex my={1} display="flex" alignItems="center" fontSize="large" color="var(--tertiary-color)">
-          {generateProducerStats(rate, <MdGrade />, <MdOutlineGrade />)}
-        </Flex>
-        <Flex my={1} display="flex" alignItems="center" fontSize="larger" color="var(--primary-color)">
-          {generateProducerStats(cost, <RiMoneyDollarCircleFill />, <RiMoneyDollarCircleLine />)}
-        </Flex>
-        {geolocation && (
-          <Flex my={1} fontSize="larger" alignItems="center">
-            <BsFillGeoAltFill />
-            {` ${calculateGeolocationDistance(geolocation.lat, geolocation.lng, producerLocation.lat, producerLocation.lng)} Km`}
-          </Flex>
+        {phone && (
+          <Box my={3} fontSize="sm">
+            <Text fontSize="larger" fontWeight={600} display="flex" alignItems="center">
+              <BsFillTelephoneFill style={{ marginRight: '4px' }} />
+              Telefone
+            </Text>
+            <Text>{`(${phone.ddd}) ${phone.ddd}`}</Text>
+          </Box>
         ) }
-        {generateProducerBenefits()}
+        {email && (
+          <Box my={2} fontSize="sm">
+            <Text fontSize="larger" fontWeight={600} display="flex" alignItems="center">
+              <MdEmail style={{ marginRight: '4px' }} />
+              Email
+            </Text>
+            <Text>{email}</Text>
+          </Box>
+        ) }
+        {location && geolocation && (
+          <Box my={2} fontSize="sm">
+            <Text fontSize="larger" fontWeight={600} display="flex" alignItems="center">
+              <BsFillGeoAltFill style={{ marginRight: '4px' }} />
+              Localização
+            </Text>
+            <Text>{`Aprox. ${calculateGeolocationDistance(geolocation.lat, geolocation.lng, location.lat, location.lng)} Km do seu ponto atual.`}</Text>
+          </Box>
+        ) }
+        {location && (
+          <Box my={2} fontSize="sm">
+            <Text fontSize="larger" fontWeight={600} display="flex" alignItems="center">
+              <SiOpenstreetmap style={{ marginRight: '4px' }} />
+              Endereço
+            </Text>
+            <Text>{`${location.street}, ${location.number}`}</Text>
+            <Text>{`Bairro ${location.neighborhood}`}</Text>
+            <Text>{`${location.city}, ${location.uf} - BR`}</Text>
+          </Box>
+        ) }
       </Flex>
     </Box>
   );

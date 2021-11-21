@@ -42,6 +42,7 @@ export function* deleteProductAction(payload) {
 }
 
 export function* patchProducerAddressAction(payload) {
+  console.log(payload);
   const request = yield call(api.patch, `/producer/${payload.id}`, payload);
   const response = request.data;
 
@@ -49,7 +50,6 @@ export function* patchProducerAddressAction(payload) {
 }
 
 export function* patchProducerDataAction(payload) {
-  console.log(payload);
   const producer = {
     name: payload.data.name,
     phone: {
@@ -57,6 +57,7 @@ export function* patchProducerDataAction(payload) {
       number: payload.data.phone,
     },
     image: payload.data.image,
+    seller_id: payload.data.seller_id,
   };
   const request = yield call(api.patch, `/producer/${payload.id}`, producer);
   const response = request.data;
@@ -74,8 +75,8 @@ export function* postProducerAction(payload) {
     },
     password: payload.producer.password,
     image: 'https://yorktonrentals.com/wp-content/uploads/2017/06/usericon.png',
-    seller_id: 'TEST-aa052183-bc43-4cde-80ce-f53c68bc7650',
-    location: { lat: -25.4110303, lng: -51.5862526 },
+    seller_id: '',
+    start_date: new Date(),
   };
 
   console.log(payload);

@@ -84,10 +84,10 @@ const Register = () => {
               </Text>
             </GridItem>
             <GridItem colSpan={12}>
-              <Input id="name" value={producer.name} placeholder="Nome Completo*" onChange={({ target }) => handleInput(target)} />
+              <Input id="name" maxLength={30} value={producer.name} placeholder="Nome Completo*" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={12}>
-              <Input id="email" value={producer.email} placeholder="Email*" onChange={({ target }) => handleInput(target)} />
+              <Input id="email" maxLength={50} value={producer.email} placeholder="Email*" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={3}>
               <Input id="ddd" type="number" value={producer.ddd} placeholder="DDD*" onChange={({ target }) => handleInput(target)} />
@@ -96,10 +96,10 @@ const Register = () => {
               <Input id="phone" type="number" value={producer.phone} placeholder="Telefone*" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={6}>
-              <Input id="password" type="password" value={producer.password} placeholder="Senha*" onChange={({ target }) => handleInput(target)} />
+              <Input id="password" type="password" maxLength={50} value={producer.password} placeholder="Senha*" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={6}>
-              <Input id="confirmPassword" type="password" value={producer.confirmPassword} placeholder="Confirme a Senha*" onChange={({ target }) => handleInput(target)} />
+              <Input id="confirmPassword" type="password" maxLength={50} value={producer.confirmPassword} placeholder="Confirme a Senha*" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={12}>
               {errorMessage && <Text textAlign="center" fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }}>{errorMessage}</Text>}

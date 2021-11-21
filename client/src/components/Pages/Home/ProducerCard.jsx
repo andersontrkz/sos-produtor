@@ -4,8 +4,6 @@ import {
   Flex, Image, Badge, Text, Grid, GridItem,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MdOutlineGrade, MdGrade } from 'react-icons/md';
-import { RiMoneyDollarCircleLine, RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { BsFillGeoAltFill } from 'react-icons/bs';
 
 import { setMapCenterAction, setMapMarkerSelectedAction } from '../../../store/modules/shop/actions';
@@ -13,7 +11,7 @@ import { getGeolocation, calculateGeolocationDistance } from '../../../utils/geo
 
 const ProducerCard = ({
   producer: {
-    _id, name, rate, image, location: producerLocation, cost,
+    _id, name, image, location: producerLocation, start_date: startDate,
   },
 }) => {
   const dispatch = useDispatch();
@@ -25,17 +23,17 @@ const ProducerCard = ({
     dispatch(setMapMarkerSelectedAction(_id));
   };
 
-  const generateProducerStats = (stats, activeElement, inativeElement) => {
-    const array = [];
-    for (let index = 0; index < Number(stats); index += 1) {
-      array[index] = activeElement;
+  const isSevenDaysDifference = () => {
+    const now = new Date();
+    const past = new Date(startDate);
+    const diff = Math.abs(now.getTime() - past.getTime());
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+    if (days < 8) {
+      return true;
     }
 
-    for (let index = Number(stats); index < 5; index += 1) {
-      array[index] = inativeElement;
-    }
-
-    return array;
+    return false;
   };
 
   useEffect(() => {
@@ -63,22 +61,18 @@ const ProducerCard = ({
       <Flex minW="160px" maxW="160px" p={2} flexDir="column" justifyContent="space-between">
         <Text fontSize="sm" fontWeight="900">{name}</Text>
         <Grid templateColumns="repeat(2, 1fr)">
-          <GridItem>
-            <Text p={1} fontSize="xs" display="flex" alignItems="center" color="var(--tertiary-color)">{generateProducerStats(rate, <MdGrade />, <MdOutlineGrade />)}</Text>
-          </GridItem>
           { geolocation && (
           <GridItem rowSpan={2} display="flex" fontSize="xs" alignItems="center">
             <BsFillGeoAltFill style={{ marginRight: '4px' }} />
             {` ${calculateGeolocationDistance(geolocation.lat, geolocation.lng, producerLocation.lat, producerLocation.lng)} Km`}
           </GridItem>
           )}
-          <GridItem>
-            <Text p={1} fontSize="xs" display="flex" alignItems="center" color="var(--secondary-color)">{generateProducerStats(cost, <RiMoneyDollarCircleFill />, <RiMoneyDollarCircleLine />)}</Text>
-          </GridItem>
         </Grid>
-        <Badge fontSize="xs" colorScheme="whatsapp" maxW="max-content" px={2}>
-          Frete Grátis
+        {isSevenDaysDifference() && (
+        <Badge fontSize="xs" colorScheme="linkedin" maxW="max-content" px={2}>
+          Novo
         </Badge>
+        )}
       </Flex>
     </Flex>
   );
@@ -93,6 +87,7 @@ ProducerCard.propTypes = {
     rate: PropTypes.string,
     range: PropTypes.string,
     image: PropTypes.string,
+    start_date: PropTypes.string,
     location: PropTypes.shape(),
   }).isRequired,
 };

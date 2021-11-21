@@ -14,8 +14,15 @@ const MapMarker = ({ producer: { _id, image } }) => {
     <Link to={`/producer/${_id}`}>
       <Flex w="120px" h="120px">
         <Image
-          mt="8px"
-          ml="27px"
+          mt="-38.5px"
+          ml="-40px"
+          src={selectedProducerMapMarker === _id ? MarkerSelectedIcon : MarkerIcon}
+          w="100%"
+          h="100%"
+          objectFit="cover"
+          transform="rotate(135deg)"
+        />
+        <Image
           position="absolute"
           w="66px"
           h="66px"
@@ -23,7 +30,6 @@ const MapMarker = ({ producer: { _id, image } }) => {
           src={image}
           objectFit="cover"
         />
-        <Image src={selectedProducerMapMarker === _id ? MarkerSelectedIcon : MarkerIcon} w="100%" h="100%" objectFit="cover" />
       </Flex>
     </Link>
   );
