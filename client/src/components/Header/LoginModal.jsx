@@ -51,7 +51,7 @@ const LoginModal = ({ isOpen, onClose }) => {
               <Input id="email" placeholder="Email" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={12}>
-              <Input id="password" placeholder="Senha" onChange={({ target }) => handleInput(target)} />
+              <Input id="password" type="password" placeholder="Senha" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={12}>
               <Text textAlign="center" fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }} onClick={() => history.push('/register')}>Não possui uma conta? Clique aqui!</Text>
