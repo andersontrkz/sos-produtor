@@ -3,28 +3,32 @@ import {
   Grid, GridItem, Text, Input, Image, Button,
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { setCustomerAction } from '../../../store/modules/shop/actions';
+import { setCustomerAction, postProducerAction } from '../../../store/modules/shop/actions';
 
 import Layout from '../../Layout/Layout';
 
 const Register = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const [customer, setCustomer] = useState({
+  const [producer, setProducer] = useState({
     name: '',
-    surname: '',
-    cpf: '',
     email: '',
     ddd: '',
     phone: '',
+    password: '',
+    confirmPassword: '',
   });
 
   const handleInput = ({ id, value }) => {
-    setCustomer({ ...customer, [id]: value });
+    setProducer({ ...producer, [id]: value });
   };
 
   const redirectToHome = () => {
-    dispatch(setCustomerAction(customer));
+    dispatch(postProducerAction(producer));
+    dispatch(setCustomerAction(producer));
+    history.push('/');
   };
 
   return (
@@ -40,26 +44,23 @@ const Register = () => {
                 Todos os benefícios de comprar diretamente do produtor, aqui!
               </Text>
             </GridItem>
-            <GridItem colSpan={6}>
-              <Input id="name" placeholder="Nome" color="var(--white-color)" onChange={({ target }) => handleInput(target)} />
-            </GridItem>
-            <GridItem colSpan={6}>
-              <Input id="surname" placeholder="Sobrenome" color="var(--white-color)" onChange={({ target }) => handleInput(target)} />
+            <GridItem colSpan={12}>
+              <Input id="name" value={producer.name} placeholder="Nome Completo" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={12}>
-              <Input id="cpf" placeholder="CPF" color="var(--white-color)" onChange={({ target }) => handleInput(target)} />
-            </GridItem>
-            <GridItem colSpan={12}>
-              <Input id="email" placeholder="Email" color="var(--white-color)" onChange={({ target }) => handleInput(target)} />
+              <Input id="email" value={producer.email} placeholder="Email" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={3}>
-              <Input id="ddd" placeholder="DDD" color="var(--white-color)" onChange={({ target }) => handleInput(target)} />
+              <Input id="ddd" value={producer.ddd} placeholder="DDD" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={9}>
-              <Input id="phone" placeholder="Telefone" color="var(--white-color)" onChange={({ target }) => handleInput(target)} />
+              <Input id="phone" value={producer.phone} placeholder="Telefone" onChange={({ target }) => handleInput(target)} />
             </GridItem>
-            <GridItem colSpan={12}>
-              <Text textAlign="center" fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }}>Não possui uma conta? Clique aqui!</Text>
+            <GridItem colSpan={6}>
+              <Input id="password" value={producer.password} placeholder="Senha" onChange={({ target }) => handleInput(target)} />
+            </GridItem>
+            <GridItem colSpan={6}>
+              <Input id="confirmPassword" value={producer.confirmPassword} placeholder="Confirme a Senha" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={12}>
               <Button

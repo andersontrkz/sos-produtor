@@ -30,3 +30,12 @@ export const postProductAction = (product) => (
 
 export const deleteProductAction = (id) => (
   { type: types.DELETE_PRODUCT, id });
+
+export const patchProducerAddressAction = (id, location) => (
+  { type: types.PATCH_PRODUCER_ADDRESS, id, location });
+
+export const patchProducerDataAction = (id, data) => (
+  { type: types.PATCH_PRODUCER_DATA, id, data });
+
+export const postProducerAction = (producer) => (
+  { type: types.POST_PRODUCER, producer });

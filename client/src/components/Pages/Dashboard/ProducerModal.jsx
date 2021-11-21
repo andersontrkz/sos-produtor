@@ -4,15 +4,17 @@ import {
   Modal, Button, ModalOverlay, ModalContent, ModalHeader,
   ModalBody, ModalFooter, Grid, GridItem, Input, ModalCloseButton,
 } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { patchProducerDataAction } from '../../../store/modules/shop/actions';
 
 const ProductsModal = ({ isOpen, onClose }) => {
-  const { login } = useSelector((state) => state.shop);
+  const { producer: storedProducer } = useSelector((state) => state.shop);
+  const dispatch = useDispatch();
 
   const [producer, setProducer] = useState({
     name: '',
-    surname: '',
-    cpf: '',
+    image: '',
     email: '',
     ddd: '',
     phone: '',
@@ -25,17 +27,19 @@ const ProductsModal = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     setProducer({
-      name: login.name,
-      surname: login.surname,
-      cpf: login.cpf,
-      image: login.image,
-      email: login.email,
-      ddd: login.ddd,
-      phone: login.phone,
-      seller_id: login.seller_id,
+      name: storedProducer?.name,
+      cpf: storedProducer?.cpf,
+      image: storedProducer?.image,
+      email: storedProducer?.email,
+      ddd: storedProducer?.phone?.ddd,
+      phone: storedProducer?.phone?.number,
+      seller_id: storedProducer?.seller_id,
     });
-    console.log(login);
   }, []);
+
+  const saveData = () => {
+    dispatch(patchProducerDataAction(storedProducer._id, producer));
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
@@ -45,13 +49,9 @@ const ProductsModal = ({ isOpen, onClose }) => {
         <ModalCloseButton />
         <ModalBody>
           <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-            <GridItem colSpan={6}>
-              Nome
-              <Input id="name" value={producer.name} placeholder="Nome" onChange={({ target }) => handleInput(target)} />
-            </GridItem>
-            <GridItem colSpan={6}>
-              Sobrenome
-              <Input id="surname" value={producer.surname} placeholder="Sobrenome" onChange={({ target }) => handleInput(target)} />
+            <GridItem colSpan={12}>
+              Nome Completo
+              <Input id="name" value={producer.name} placeholder="Nome Completo" onChange={({ target }) => handleInput(target)} />
             </GridItem>
             <GridItem colSpan={12}>
               Imagem de Perfil (URL)
@@ -83,7 +83,7 @@ const ProductsModal = ({ isOpen, onClose }) => {
           <Button colorScheme="blue" mr={3} onClick={onClose}>
             Cancelar
           </Button>
-          <Button colorScheme="whatsapp">Salvar</Button>
+          <Button colorScheme="whatsapp" onClick={saveData}>Salvar</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -37,6 +37,12 @@ const ProductModal = ({ isOpen, onClose }) => {
     setProduct({ ...product, [key]: value });
   };
 
+  const saveProduct = () => {
+    dispatch(postProductAction(product));
+    window.location.reload();
+    onClose();
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
@@ -80,7 +86,7 @@ const ProductModal = ({ isOpen, onClose }) => {
           <Button colorScheme="blue" mr={3} onClick={onClose}>
             Cancelar
           </Button>
-          <Button colorScheme="whatsapp" onClick={() => dispatch(postProductAction(product))}>Salvar</Button>
+          <Button colorScheme="whatsapp" onClick={() => saveProduct()}>Salvar</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

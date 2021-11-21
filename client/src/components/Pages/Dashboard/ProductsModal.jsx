@@ -12,6 +12,7 @@ import { requestProducerAction, deleteProductAction } from '../../../store/modul
 const ProductsModal = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const { producer, login } = useSelector((state) => state.shop);
+
   useEffect(() => {
     dispatch(requestProducerAction(login._id));
   }, []);
@@ -20,6 +21,11 @@ const ProductsModal = ({ isOpen, onClose }) => {
     dispatch(deleteProductAction(id));
     const row = document.getElementById(id);
     row.remove();
+  };
+
+  const closeModal = () => {
+    window.location.reload();
+    onClose();
   };
 
   return (
@@ -59,7 +65,7 @@ const ProductsModal = ({ isOpen, onClose }) => {
           </Table>
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
+          <Button colorScheme="blue" mr={3} onClick={closeModal}>
             Fechar
           </Button>
         </ModalFooter>
