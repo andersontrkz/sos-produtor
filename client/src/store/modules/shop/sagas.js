@@ -50,7 +50,15 @@ export function* patchProducerAddressAction(payload) {
 
 export function* patchProducerDataAction(payload) {
   console.log(payload);
-  const request = yield call(api.patch, `/producer/${payload.id}`, payload.data);
+  const producer = {
+    name: payload.data.name,
+    phone: {
+      ddd: payload.data.ddd,
+      number: payload.data.phone,
+    },
+    image: payload.data.image,
+  };
+  const request = yield call(api.patch, `/producer/${payload.id}`, producer);
   const response = request.data;
 
   console.log(response);

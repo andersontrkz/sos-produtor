@@ -27,6 +27,7 @@ const ProductsModal = ({ isOpen, onClose }) => {
   };
 
   useEffect(() => {
+    console.log(storedProducer);
     setProducer({
       name: storedProducer?.name,
       image: storedProducer?.image,

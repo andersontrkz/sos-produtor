@@ -14,6 +14,7 @@ const LoginModal = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const { login: loginStore } = useSelector((state) => state.shop);
   const [redirect, setRedirect] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const [login, setLogin] = useState({
     email: '',
@@ -27,10 +28,12 @@ const LoginModal = ({ isOpen, onClose }) => {
   const loginRedirect = () => {
     setRedirect(true);
     dispatch(requestLoginAction(login));
+    setErrorMessage('Dados incorretos, tente novamente*');
   };
 
   useEffect(() => {
     if (loginStore._id && redirect) {
+      setErrorMessage(false);
       history.push('/dashboard');
     }
   }, [loginStore]);
@@ -70,6 +73,9 @@ const LoginModal = ({ isOpen, onClose }) => {
               >
                 Entrar
               </Button>
+            </GridItem>
+            <GridItem colSpan={12}>
+              {errorMessage && <Text textAlign="center" fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }}>{errorMessage}</Text>}
             </GridItem>
           </Grid>
         </ModalBody>
