@@ -35,7 +35,7 @@ const Producer = ({
               <BsFillTelephoneFill style={{ marginRight: '4px' }} />
               Telefone
             </Text>
-            <Text>{`(${phone.ddd}) ${phone.ddd}`}</Text>
+            <Text>{`(${phone.ddd}) ${phone.number}`}</Text>
           </Box>
         ) }
         {email && (
