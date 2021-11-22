@@ -38,6 +38,10 @@ const create = async ({
       name, email, phone, image, seller_id, password: encrypt, location, start_date,
     });
 
+    const producerExists = await Producer.findOne({ email });
+
+    if (producerExists) return { message: 'Producer exists' };
+
     const producer = await newProducer.save();
 
     return producer;
