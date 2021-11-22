@@ -1,54 +1,46 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  Button, Menu as ChakraMenu, MenuButton, MenuList, MenuItem,
-} from '@chakra-ui/react';
+import { useHistory } from 'react-router-dom';
+import { Button, useDisclosure } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { FaUserCircle, FaRegUser } from 'react-icons/fa';
-import { BsCart3, BsClipboardData } from 'react-icons/bs';
-// import { useHistory } from 'react-router-dom';
+import { MdKeyboardArrowRight } from 'react-icons/md';
+import { FaUserCircle } from 'react-icons/fa';
 
-const Menu = ({ cartOpenModal }) => {
-  const { customer, totalCartQuantity } = useSelector((state) => state.shop);
-  // const history = useHistory();
+import LoginModal from './LoginModal';
+
+const Menu = () => {
+  const { login } = useSelector((state) => state.shop);
+  const history = useHistory();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleButtonClick = () => {
+    if (login._id) {
+      history.push('/dashboard');
+    } else {
+      onOpen();
+    }
+  };
 
   return (
-    <ChakraMenu>
-      <MenuButton
+    <>
+      <Button
         as={Button}
         position="absolute"
-        right="20"
+        left="20"
         bg="var(--tertiary-color)"
         color="white"
         transition=".9s"
         fontSize="sm"
-        rightIcon={customer.name && <MdKeyboardArrowDown />}
+        size="sm"
+        rightIcon={login.name && <MdKeyboardArrowRight />}
         leftIcon={<FaUserCircle />}
         _hover={{ backgroundColor: 'var(--quaternary-color)' }}
+        onClick={handleButtonClick}
       >
-        { customer.name ? customer.name.split(' ')[0] : 'Login' }
-      </MenuButton>
-      <MenuList>
-        <MenuItem>
-          <FaRegUser style={{ marginRight: '12px', marginBottom: '1px' }} />
-          Meus Dados
-        </MenuItem>
-        <MenuItem onClick={cartOpenModal}>
-          <BsCart3 style={{ marginRight: '12px', marginBottom: '1px' }} />
-          {`Meu Carrinho (${totalCartQuantity})`}
-        </MenuItem>
-        <MenuItem>
-          <BsClipboardData style={{ marginRight: '12px', marginBottom: '1px' }} />
-          Minhas Compras
-        </MenuItem>
-      </MenuList>
-    </ChakraMenu>
+        { login._id ? 'Dashboard' : 'Sou Produtor' }
+      </Button>
+      <LoginModal isOpen={isOpen} onClose={onClose} />
+    </>
   );
-};
-
-Menu.propTypes = {
-  cartOpenModal: PropTypes.func.isRequired,
 };
 
 export default Menu;

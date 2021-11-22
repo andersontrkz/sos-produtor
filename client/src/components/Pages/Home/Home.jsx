@@ -23,18 +23,22 @@ const Home = () => {
     getGeolocation(setCurrentGeolocationMapCenter);
   }, []);
 
+  const producersPartners = () => producers.filter(
+    (producer) => producer.seller_id && producer.location,
+  );
+
   return (
     <Layout>
       <Flex justifyContent="center" pos="absolute" left={8} bottom={10} zIndex="999" bg="var(--quaternary-color)" py={1} px={4} borderRadius="8px">
         <Text fontSize={18} color="#FFF">
-          { `Produtores Disponíveis (${producers.length})` }
+          { `Produtores Disponíveis (${producersPartners().length})` }
         </Text>
       </Flex>
       <Flex justifyContent="center" maxH="20vh" borderBottom="1px solid rgba(0, 0, 0, 0.3)">
-        <ProducersList producers={producers} />
+        <ProducersList producers={producersPartners()} />
       </Flex>
       <Flex h="100%">
-        <Map producers={producers} />
+        <Map producers={producersPartners()} />
       </Flex>
     </Layout>
   );

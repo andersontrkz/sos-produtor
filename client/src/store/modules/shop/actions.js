@@ -18,3 +18,24 @@ export const setProducerAction = (producer) => ({ type: types.SET_PRODUCER, prod
 
 export const handleProductCartAction = (product, quantity) => (
   { type: types.HANDLE_PRODUCT_CART, product, quantity });
+
+export const requestLoginAction = (login) => (
+  { type: types.REQUEST_LOGIN, login });
+
+export const setLoginAction = (login) => (
+  { type: types.SET_LOGIN, login });
+
+export const postProductAction = (product) => (
+  { type: types.POST_PRODUCT, product });
+
+export const deleteProductAction = (id) => (
+  { type: types.DELETE_PRODUCT, id });
+
+export const patchProducerAddressAction = (id, location) => (
+  { type: types.PATCH_PRODUCER_ADDRESS, id, location });
+
+export const patchProducerDataAction = (id, data) => (
+  { type: types.PATCH_PRODUCER_DATA, id, data });
+
+export const postProducerAction = (producer) => (
+  { type: types.POST_PRODUCER, producer });

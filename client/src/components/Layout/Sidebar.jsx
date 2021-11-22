@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Text,
-  Drawer,
-  DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, DrawerFooter,
+  Button, Text, Drawer, Badge, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader,
+  DrawerBody, DrawerFooter,
 } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -12,6 +11,11 @@ import Cart from '../Pages/Checkout/Cart';
 
 const Sidebar = ({ isOpen, onClose }) => {
   const { totalCartQuantity, totalCartPrice } = useSelector((state) => state.shop);
+
+  const clearCartItens = () => {
+    localStorage.removeItem('SOS_PRODUTOR_CART');
+    window.location.reload();
+  };
 
   return (
     <Drawer
@@ -28,6 +32,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
         <DrawerBody p={6}>
           <Cart />
+          <Badge mt={1} px={2} colorScheme="red" mr={3} cursor="pointer" onClick={clearCartItens} fontSize="xs">Limpar Carrinho ☓</Badge>
         </DrawerBody>
 
         <DrawerFooter fontWeight={600} display="flex" justifyContent="space-between">
@@ -39,7 +44,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           </Text>
         </DrawerFooter>
         <Link to="/checkout">
-          <Button w="100%" borderRadius="none" size="lg" colorScheme="whatsapp">Finalizar Compra</Button>
+          <Button w="100%" borderRadius="none" size="lg" colorScheme="whatsapp">Fazer Checkout</Button>
         </Link>
       </DrawerContent>
     </Drawer>

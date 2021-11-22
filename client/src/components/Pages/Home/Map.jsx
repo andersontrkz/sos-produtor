@@ -22,11 +22,20 @@ const Map = ({ producers }) => {
       center={mapCenter}
       defaultZoom={15}
     >
-      {producers.map((producer) => (
-        <MapMarker producer={producer} lat={producer.location.lat} lng={producer.location.lng} />
+      {producers?.map((producer) => (
+        <MapMarker
+          producer={producer}
+          lat={producer?.location?.lat}
+          lng={producer?.location?.lng}
+        />
       ))}
       {geolocation
-      && <ClientMapMarker lat={geolocation.lat} lng={geolocation.lng} />}
+      && (
+      <ClientMapMarker
+        lat={geolocation?.lat}
+        lng={geolocation?.lng}
+      />
+      )}
     </GoogleMapReact>
   );
 };

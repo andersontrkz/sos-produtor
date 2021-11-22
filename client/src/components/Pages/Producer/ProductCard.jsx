@@ -10,7 +10,7 @@ import { handleProductCartAction } from '../../../store/modules/shop/actions';
 const ProductCard = ({
   product,
   product: {
-    _id, name, price, image, measurement, benefits,
+    _id, name, price, image, measurement, free_delivery: freeDelivery,
   },
 }) => {
   const dispatch = useDispatch();
@@ -61,21 +61,11 @@ const ProductCard = ({
     <GridItem w="60" h="80" maxW="60" maxH="80" boxShadow="xl" borderRadius="8px" bg="#FFF" _hover={{ transform: 'scale(1.05)', transition: '.9s' }}>
       <Grid templateColumns="repeat(12, 1fr)">
         <GridItem colSpan={12} minH="19px" maxH="19px">
-          {benefits?.free_delivery && (
+          {freeDelivery && (
           <Badge my={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="whatsapp" display="flex" alignItems="center">
             Frete Grátis
           </Badge>
           ) }
-          {benefits?.discount && (
-          <Badge my={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="red" display="flex" alignItems="center">
-            {`${benefits?.discount} OFF`}
-          </Badge>
-          )}
-          {benefits?.new && (
-          <Badge my={2} px={2} borderRadius="0 8px 8px 0" position="relative" zIndex="999" w="fit-content" fontSize="xs" colorScheme="linkedin" display="flex" alignItems="center">
-            Novo
-          </Badge>
-          )}
         </GridItem>
         <GridItem colSpan={12} h="40" display="flex">
           <Image src={image} m="0 auto" objectFit="cover" />
@@ -111,11 +101,7 @@ ProductCard.propTypes = {
     _id: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.number,
-    benefits: PropTypes.shape({
-      discount: PropTypes.number,
-      free_delivery: PropTypes.bool,
-      new: PropTypes.bool,
-    }),
+    free_delivery: PropTypes.bool,
     image: PropTypes.string,
     measurement: PropTypes.shape({
       amount: PropTypes.number,
