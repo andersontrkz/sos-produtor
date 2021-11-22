@@ -1,151 +1,467 @@
 [
   {
     "name": "João Carneiro",
-    "image": "https://image.freepik.com/fotos-gratis/perto-do-velho-fazendeiro-segurando-uma-cesta-de-legumes-o-homem-esta-parado-no-jardim-senior-em-um-avental-preto_1157-39733.jpg",
-    "cost": 5,
-    "rate": 4,
+    "image": "https://www.nextfarming.com/fileadmin/_processed_/6/f/csm_mann_vor_landschaft_aafb808e51.jpg",
+    "email": "joao@carneiro.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664201",
+    "phone": {"ddd": "42", "number": "36278909" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-10-22T04:18:06.345Z",
     "location": {
-      "lat": -25.4110303,
-      "lng": -51.5862526
+      "cep": 85020100,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua Dr. Eusébio",
+      "number": 354,
+      "neighborhood": "Bom Jesus",
+      "lat": -25.3921986,
+      "lng": -51.5928516
     },
-    "benefits": {
-      "discount": false,
-      "free_delivery": false,
-      "new": true,
-      "offer": false
+    "products": [
+      {
+        "name": "Banana Caturra",
+        "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_caturra1-7e2b9a3f6b39b3309915220270001382-1024-1024.jpg",
+        "price": 8.90,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": false
+      },{
+        "name": "Beterraba",
+        "image": "https://revistacampoenegocios.com.br/wp-content/uploads/2020/11/Foto-01-41-975x1024.jpg",
+        "price": 7.80,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": false
+      },{
+        "name": "Morango",
+        "image": "https://cdn.entrypoint.directory/assets/46746/produtos/605509/144.jpg",
+        "price": 5.40,
+        "measurement": { "amount": 500, "unit": "g" },
+        "free_delivery": false
+      },{
+        "name": "Mel",
+        "image": "https://big1news.com.br/wp-content/uploads/2013/12/mel-tratamento-pele.jpg",
+        "price": 15.90,
+        "measurement": { "amount": 500, "unit": "g" },
+        "free_delivery": true
+      },{
+        "name": "Mel",
+        "image": "https://big1news.com.br/wp-content/uploads/2013/12/mel-tratamento-pele.jpg",
+        "price": 25.40,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": true
+      },{
+        "name": "Mel",
+        "image": "https://big1news.com.br/wp-content/uploads/2013/12/mel-tratamento-pele.jpg",
+        "price": 39.90,
+        "measurement": { "amount": 2, "unit": "Kg" },
+        "free_delivery": false
+      }
+    ]
+  },{
+    "name": "Maria Tereza",
+    "image": "https://i.pinimg.com/originals/d8/4b/be/d84bbe36da179c3628f7cc14af144389.jpg",
+    "email": "maria@tereza.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664202",
+    "phone": { "ddd": "42", "number": "30350066" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-10-22T04:18:06.345Z",
+    "location": {
+      "cep": 84020300,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua Umuarama",
+      "number": 96,
+      "neighborhood": "Novo Jardim",
+      "lat": -25.3883786,
+      "lng": -51.4222423
     },
     "products": [
       {
         "name": "Alface Crespa",
-        "image": "https://images.squarespace-cdn.com/content/v1/5b8edfa12714e508f756f481/1543944726778-3R28J0BST06GRZCOF7UR/alface-crespa-verde-hidropo%CC%82nica.png?format=1000w",
-        "price": 4.90,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "1",
-          "unit": "UN"
-        },
-        "benefits": {
-          "discount": "-20%",
-          "free_delivery": false,
-          "new": false
-        }
+        "image": "https://cdn.awsli.com.br/600x450/334/334766/produto/18043861/e57164bfb6.jpg",
+        "price": 4.50,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": false
       },{
-        "name": "Tomate Carmem",
-        "image": "https://imagensemoldes.com.br/wp-content/uploads/2020/07/Pizza-Tomate-PNG-1280x720.png",
-        "price": 11.80,
-        "rate": 2,
-        "measurement": {
-          "amount": "1",
-          "unit": "Kg"
-        },
-        "benefits": {
-          "discount": "-30%",
-          "free_delivery": false,
-          "new": false
-        }
+        "name": "Alface Lisa",
+        "image": "https://cdn.awsli.com.br/600x450/1304/1304561/produto/52600368/106cc3ecff.jpg",
+        "price": 4.50,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": false
       },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 8.60,
-        "rate": 3,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        },
-        "benefits": {
-          "discount": false,
-          "free_delivery": false,
-          "new": false
-        }
+        "name": "Cebola Tradicional",
+        "image": "https://hiperideal.vteximg.com.br/arquivos/ids/170995-1000-1000/51055.jpg?v=636616549635870000",
+        "price": 5.50,
+        "measurement": { "amount": 500, "unit": "g" },
+        "free_delivery": false
       },{
-        "name": "Mel Floresta Verde",
-        "image": "https://apiariosfloresta.com.br/wp-content/uploads/2020/07/mel-900g.png",
-        "price": 17.8,
-        "rate": 5,
-        "measurement": {
-          "amount": "990",
-          "unit": "g"
-        },
-        "benefits": {
-          "discount": false,
-          "free_delivery": true,
-          "new": true
-        }
+        "name": "Milho",
+        "image": "https://feiradoceasa.com.br/media/catalog/product/cache/43a1a44517dd7dea4ddeefa0e35a4987/m/i/milho-verde-2_3.jpg",
+        "price": 9.90,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": false
+      },{
+        "name": "Milho",
+        "image": "https://feiradoceasa.com.br/media/catalog/product/cache/43a1a44517dd7dea4ddeefa0e35a4987/m/i/milho-verde-2_3.jpg",
+        "price": 17.90,
+        "measurement": { "amount": 2, "unit": "Kg" },
+        "free_delivery": true
+      },{
+        "name": "Milho",
+        "image": "https://feiradoceasa.com.br/media/catalog/product/cache/43a1a44517dd7dea4ddeefa0e35a4987/m/i/milho-verde-2_3.jpg",
+        "price": 29.90,
+        "measurement": { "amount": 4, "unit": "Kg" },
+        "free_delivery": true
       }
     ]
-  },
-  {
-    "name": "Sebastião Dalí",
-    "image": "https://www.dtnpf.com/mydtn-public-core-portlet/servlet/GetStoredImage?category=CMS&symbolicName=firstgen-by-joel-reichenberger.jpg",
-    "cost": 5,
-    "rate": 4,
+  },{
+    "name": "Marcio Araújo",
+    "image": "https://live-production.wcms.abc-cdn.net.au/2731dd005c83a8cc049624de22969e95?impolicy=wcms_crop_resize&cropH=800&cropW=1200&xPos=0&yPos=0&width=862&height=575",
+    "email": "marcio@araujo.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664203",
+    "phone": { "ddd": "42", "number": "30356789" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-11-22T04:18:06.345Z",
     "location": {
-      "lat": -25.5110303,
-      "lng": -51.4862526
-    },
-    "benefits": {
-      "discount": false,
-      "free_delivery": false,
-      "new": true,
-      "offer": false
+      "cep": 85020250,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua das Roseiras",
+      "number": 72,
+      "neighborhood": "Jardim Bonito",
+      "lat": -25.3350986,
+      "lng": -51.4322687
     },
     "products": [
       {
-        "name": "Queijo Fazenda - Damasco e Avelã",
-        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_de_damasco_e_nozes_37_1_20190207211614.png",
-        "price": 30,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "700",
-          "unit": "g"
-        },
-        "benefits": {
-          "discount": "-5%",
-          "free_delivery": false,
-          "new": true
-        }
+        "name": "Frango Caipira",
+        "image": "http://www.goldenaves.com.br/wp-content/uploads/2020/11/frango-produto-final.png",
+        "price": 19.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": true
       },{
-        "name": "Queijo Fazenda - Cheddar",
-        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_de_cheddar_35_1_20190207211600.png",
-        "price": 30,
-        "rate": 2,
-        "measurement": {
-          "amount": "700",
-          "unit": "g"
-        },
-        "benefits": {
-          "discount": "-5%",
-          "free_delivery": false,
-          "new": false
-        }
+        "name": "Frango Caipira",
+        "image": "http://www.goldenaves.com.br/wp-content/uploads/2020/11/frango-produto-final.png",
+        "price": 35.90,
+        "measurement": { "amount": 2, "unit": "Un" },
+        "free_delivery": true
       },{
-        "name": "Queijo Fzenda - Tradicional",
-        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_tradicional_29_1_20190207210024.png",
-        "price": 25,
-        "rate": 3,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        },
-        "benefits": {
-          "discount": "-10%",
-          "free_delivery": false,
-          "new": false
-        }
+        "name": "Frango Caipira",
+        "image": "http://www.goldenaves.com.br/wp-content/uploads/2020/11/frango-produto-final.png",
+        "price": 60.00,
+        "measurement": { "amount": 4, "unit": "Un" },
+        "free_delivery": true
       },{
-        "name": "Doce de Leite - Tradicional",
-        "image": "http://2.bp.blogspot.com/-sCD24ONKIrA/UfBuGI09rGI/AAAAAAAAABc/s4bAj914ofA/s1600/linha-pastosos.png",
-        "price": 20,
-        "rate": 5,
-        "measurement": {
-          "amount": "680",
-          "unit": "g"
-        },
-        "benefits": {
-          "discount": false,
-          "free_delivery": false,
-          "new": false
-        }
+        "name": "Ovo Marrom",
+        "image": "https://imagensemoldes.com.br/wp-content/uploads/2020/05/Foto-Ovos-PNG.png",
+        "price": 8.50,
+        "measurement": { "amount": 12, "unit": "Un" },
+        "free_delivery": false
+      },{
+        "name": "Ovo Branco",
+        "image": "https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg",
+        "price": 7.90,
+        "measurement": { "amount": 12, "unit": "Un" },
+        "free_delivery": false
+      }
+    ]
+  },{
+    "name": "Ana Maria",
+    "image": "https://media.istockphoto.com/photos/living-with-nature-right-on-my-doorstep-picture-id832988308?k=20&m=832988308&s=612x612&w=0&h=WK52X7hWLAHcXgILzLsFgHaf2w_N3MaWt1XbbQtl-hA=",
+    "email": "ana@maria.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664204",
+    "phone": { "ddd": "42", "number": "36245678" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-10-22T04:18:06.345Z",
+    "location": {
+      "cep": 86010300,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua Xavier da Silva",
+      "number": 712,
+      "neighborhood": "Batel",
+      "lat": -25.3809886,
+      "lng": -51.4428716
+    },
+    "products": [
+      {
+        "name": "Doce de Leite com Avelã",
+        "image": "http://site.flormel.com.br/uploads/produtos/embalagens/produto_201606211526487987410.png",
+        "price": 24.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": true
+      },{
+        "name": "Doce de Leite com Banana",
+        "image": "https://www.madrugaosuplementos.com.br/media/catalog/product/cache/1/image/650x/040ec09b1e35df139433887a97daa66f/f/l/flormel-docedeleitecremoso.png",
+        "price": 24.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": true
+      },{
+        "name": "Doce de Leite com Chocolate",
+        "image": "https://www.homemdaterra.com.br/fotos/extragrande/72600fe1/doce-de-leite-cremoso-sem-adicao-de-acucar-flormel-210g.jpg",
+        "price": 24.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": true
+      },{
+        "name": "Doce de Leite com Kiwi",
+        "image": "https://io2.convertiez.com.br/m/superpaguemenos/shop/products/images/39666/medium/doce-leite-linea-210g_88927.png",
+        "price": 24.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": true
+      },{
+        "name": "Doce de Leite com Maracujá",
+        "image": "https://trimais.vteximg.com.br/arquivos/ids/1018599-1000-1000/foto_original.jpg?v=637457049510000000",
+        "price": 24.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": true
+      },{
+        "name": "Doce de Leite com Morango",
+        "image": "https://makrochuy.com/wp-content/uploads/2021/03/7896001215467",
+        "price": 24.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": true
+      },{
+        "name": "Doce de Leite com Nozes",
+        "image": "https://images.tcdn.com.br/img/img_prod/674130/doce_de_leite_tradicional_210g_linea_2637_1_634b480f2f0b1d1c73924174f8fee055.png",
+        "price": 24.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": true
+      }
+    ]
+  },{
+    "name": "José Amarildo",
+    "image": "https://cdn.sanity.io/images/92ui5egz/production/043249e1aa491e06baa6ff029774b9b7536c43b3-1920x1080.jpg?w=1920&h=1080&auto=format",
+    "email": "jose@amarildo.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664205",
+    "phone": { "ddd": "42", "number": "36279010" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-11-22T04:18:06.345Z",
+    "location": {
+      "cep": 84050300,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua General Carvalho",
+      "number": 3452,
+      "neighborhood": "Tarumã",
+      "lat": -25.3950234,
+      "lng": -51.4525467
+    },
+    "products": [
+      {
+        "name": "Abóbora Moranga",
+        "image": "https://static.clubeextra.com.br/img/uploads/1/865/637865.png",
+        "price": 11.10,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": false
+      },{
+        "name": "Abóbora Japonesa",
+        "image": "https://static.paodeacucar.com/img/uploads/1/625/12618625.jpg",
+        "price": 8.60,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": false
+      },{
+        "name": "Abóbora Menina",
+        "image": "https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/abobora_menina11-22119e4de8f0b02cb915220132657649-1024-1024.jpg",
+        "price": 12.40,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": false
+      },{
+        "name": "Xuxu",
+        "image": "https://s.cornershopapp.com/product-images/3038988.jpg?versionId=6CTvko6sEpA_1w1vSLUSp2332Fii_Ocy",
+        "price": 6.40,
+        "measurement": { "amount": 500, "unit": "g" },
+        "free_delivery": false
+      },{
+        "name": "Pimentão Vermelho",
+        "image": "https://superprix.vteximg.com.br/arquivos/ids/175197-600-600/Pimentao-Vermelho--1-unidade-aprox.-250g-.png?v=636294197371070000",
+        "price": 13.70,
+        "measurement": { "amount": 500, "unit": "g" },
+        "free_delivery": false
+      },{
+        "name": "Pimentão Verde",
+        "image": "https://hiperideal.vteximg.com.br/arquivos/ids/167657-1000-1000/24660.jpg?v=636615816136570000",
+        "price": 10.90,
+        "measurement": { "amount": 500, "unit": "g" },
+        "free_delivery": false
+      }
+    ]
+  },{
+    "name": "Jorge Coelho",
+    "image": "https://www.cfra.org/sites/default/files/page-images/img_9323.jpg",
+    "email": "jorge@coelho.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664206",
+    "phone": { "ddd": "42", "number": "36213101" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-11-22T04:18:06.345Z",
+    "location": {
+      "cep": 86020100,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua Coronel Eunísio",
+      "number": 45,
+      "neighborhood": "Bairo Alto",
+      "lat": -25.3650986,
+      "lng": -51.4622016
+    },
+    "products": [
+      {
+        "name": "Queijo Branco",
+        "image": "https://media.istockphoto.com/photos/sliced-fresh-white-cheese-picture-id499397632?k=20&m=499397632&s=612x612&w=0&h=djFr560rCvvPKgnPHa_qG-zt6vCV4D5ze1s8iihoTsY=",
+        "price": 20.90,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": true
+      },{
+        "name": "Queijo Amarelo",
+        "image": "https://yata-apix-a6f831bc-4a5d-49d3-a836-98bc6c793df8.lss.locawebcorp.com.br/8177fc2ca40142a3a2ad0ad7ef84eae6.png",
+        "price": 24.90,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": true
+      },{
+        "name": "Nata",
+        "image": "https://64612.cdn.lojaquevende.com.br/static/64612/sku/potes-pote-de-creme-1624636911301.png",
+        "price": 4.20,
+        "measurement": { "amount": 200, "unit": "g" },
+        "free_delivery": false
+      },{
+        "name": "Ricota",
+        "image": "https://i.pinimg.com/originals/7b/62/5b/7b625b8f8c64fc70cb17eb44b0de2ebe.jpg",
+        "price": 15.20,
+        "measurement": { "amount": 500, "unit": "g" },
+        "free_delivery": true
+      }
+    ]
+  },{
+    "name": "Romildo Kasinski",
+    "image": "https://www.flatlandkc.org/assets/uploads/2015/10/100115_China_Oswald-1200x900.jpg",
+    "email": "romildo@kasinski.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664207",
+    "phone": { "ddd": "42", "number": "99876787" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-10-22T04:18:06.345Z",
+    "location": {
+      "cep": 80060100,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua Amaral Diniz",
+      "number": 567,
+      "neighborhood": "Boqueirão",
+      "lat": -25.4859106,
+      "lng": -51.4878116
+    },
+    "products": [
+      {
+        "name": "Pão Integral",
+        "image": "https://www.receitas-sem-fronteiras.com/uploads/media/amant-7.jpg?1392829036",
+        "price": 9.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": false
+      },{
+        "name": "Pão Integral",
+        "image": "https://www.receitas-sem-fronteiras.com/uploads/media/amant-7.jpg?1392829036",
+        "price": 39.90,
+        "measurement": { "amount": 5, "unit": "Un" },
+        "free_delivery": true
+      },{
+        "name": "Pão Integral",
+        "image": "https://www.receitas-sem-fronteiras.com/uploads/media/amant-7.jpg?1392829036",
+        "price": 69.90,
+        "measurement": { "amount": 10, "unit": "Un" },
+        "free_delivery": true
+      }
+    ]
+  },{
+    "name": "Mayara Lurdes",
+    "image": "https://s3.envato.com/files/347780012/ALE00781.jpg",
+    "email": "mayara@lurdes.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664208",
+    "phone": { "ddd": "42", "number": "98765644" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-10-22T04:18:06.345Z",
+    "location": {
+      "cep": 82010300,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua Pref. Eraldo",
+      "number": 231,
+      "neighborhood": "Uberaba",
+      "lat": -25.3859106,
+      "lng": -51.4878116
+    },
+    "products": [
+      {
+        "name": "Linguiça Suina",
+        "image": "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/135/059/products/linguica-de-frango1-022c814a13871f750415857640682572-640-0.png",
+        "price": 18.90,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": true
+      },{
+        "name": "Linguiça Bovina",
+        "image": "https://cdn.awsli.com.br/600x450/1286/1286829/produto/51031359/edb255a437.jpg",
+        "price": 18.90,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": true
+      },{
+        "name": "Linguiça Calabresa",
+        "image": "https://assets.instabuy.com.br/ib.item.image.big/b-6c422d7f69e344e4b17fb19e5596ace1.png",
+        "price": 18.90,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": true
+      },{
+        "name": "Linguiça de Frango",
+        "image": "http://io2.convertiez.com.br/m/superpaguemenos/shop/products/images/22885/large/linguica-de-frango-leve-mais-com-ervas-kg_76688.jpg",
+        "price": 18.90,
+        "measurement": { "amount": 1, "unit": "Kg" },
+        "free_delivery": true
+      }
+    ]
+  },{
+    "name": "Paulo Rafael",
+    "image": "https://www.dtnpf.com/mydtn-public-core-portlet/servlet/GetStoredImage?category=CMS&symbolicName=firstgen-by-joel-reichenberger.jpg",
+    "email": "paulo@rafael.com",
+    "seller_id": "TG-619a845da954ac001bf766c0-10232664209",
+    "phone": { "ddd": "42", "number": "99876789" },
+    "password": "eyJhbGciOiJIUzI1NiJ9.Yy5jQGMuY29t.3yjxV-BF2A18ytbWM--ng3I7E43ilEogpTWQRMHDNl8",
+    "start_date": "2021-11-22T04:18:06.345Z",
+    "location": {
+      "cep": 82050250,
+      "city": "Guarapuava",
+      "uf": "PR",
+      "street": "Rua Rio Verde",
+      "number": 48,
+      "neighborhood": "Matriz",
+      "lat": -25.3921986,
+      "lng": -51.4928516
+    },
+    "products": [
+      {
+        "name": "Abacaxi",
+        "image": "http://static1.squarespace.com/static/5b8edfa12714e508f756f481/5b901c270e2e720f73c99a8c/5bb50382e2c483423e3eb1fd/1550101134166/abacaxi-havai%CC%81.jpg?format=1500w",
+        "price": 4.90,
+        "measurement": { "amount": 1, "unit": "Un" },
+        "free_delivery": false
+      },{
+        "name": "Abacaxi",
+        "image": "http://static1.squarespace.com/static/5b8edfa12714e508f756f481/5b901c270e2e720f73c99a8c/5bb50382e2c483423e3eb1fd/1550101134166/abacaxi-havai%CC%81.jpg?format=1500w",
+        "price": 12.40,
+        "measurement": { "amount": 3, "unit": "Un" },
+        "free_delivery": false
+      },{
+        "name": "Conserva de Ovos de Codorna",
+        "image": "http://cruzdistribuidora.com.br/wp-content/uploads/2014/10/ovo-de-codorna.png",
+        "price": 39.90,
+        "measurement": { "amount": 2, "unit": "Kg" },
+        "free_delivery": true
+      },{
+        "name": "Conserva de Pepinos",
+        "image": "https://www.pngkey.com/png/detail/761-7617001_pepino-orgnico-em-conserva-stio-santa-rosa-pickled.png",
+        "price": 5.40,
+        "measurement": { "amount": 380, "unit": "g" },
+        "free_delivery": false
+      },{
+        "name": "Conserva de Batatas",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNyg2VkW6JZNhWhTA01P51f1emh6etwXttIA&usqp=CAU",
+        "price": 8.90,
+        "measurement": { "amount": 600, "unit": "g" },
+        "free_delivery": false
       }
     ]
   }

@@ -10,7 +10,7 @@ import MercadoPagoCheckout from 'react-mercadopago-checkout';
 import { createTransaction } from '../../../apis/mercadopago';
 
 const Form = ({
-  transaction, setTransaction,
+  transaction, setTransaction, validateForm,
 }) => {
   const [preferenceId, setPreferenceId] = useState();
   const { totalCartPrice } = useSelector((state) => state.shop);
@@ -56,8 +56,10 @@ const Form = ({
   };
 
   const generateTransactionToken = async () => {
-    const token = await createTransaction(transaction);
-    setPreferenceId(token);
+    if (validateForm()) {
+      const token = await createTransaction(transaction);
+      setPreferenceId(token);
+    }
   };
 
   return (
@@ -103,6 +105,7 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={4}>
         <Input
+          type="number"
           id="number"
           placeholder="CPF"
           bg="gray.100"
@@ -129,6 +132,7 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={2}>
         <Input
+          type="number"
           id="area_code"
           placeholder="DDD"
           bg="gray.100"
@@ -142,6 +146,7 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={4}>
         <Input
+          type="number"
           id="number"
           placeholder="Telefone"
           bg="gray.100"
@@ -182,6 +187,7 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={4}>
         <Input
+          type="number"
           id="street_number"
           placeholder="Número"
           bg="gray.100"
@@ -221,6 +227,7 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={2}>
         <Input
+          maxLength={2}
           id="uf"
           placeholder="UF"
           bg="gray.100"
@@ -234,6 +241,7 @@ const Form = ({
       </GridItem>
       <GridItem colSpan={4}>
         <Input
+          type="number"
           id="zip_code"
           colSpan={11}
           placeholder="CEP"

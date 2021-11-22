@@ -13,53 +13,7 @@ const Checkout = () => {
   const {
     cart, totalCartQuantity, totalCartPrice,
   } = useSelector((state) => state.shop);
-  // const generateSevenDaysDate = () => {
-  //   const date = new Date();
-  //   date.setDate(date.getDate() + 7);
-
-  //   return date;
-  // };
-
-  // const totals = cart.reduce((total, product) => total + product.price, 0);
-
-  // const generateSplitRules = () => {
-  //   const productsByProducer = underscore.groupBy(
-  //     cart,
-  //     // eslint-disable-next-line no-underscore-dangle
-  //     (product) => product.producer_id.seller_id,
-  //   );
-  //   const result = [];
-
-  //   Object.keys(productsByProducer).forEach((producer) => {
-  //     const products = productsByProducer[producer];
-
-  //     const totalValuePerProducer = products
-  //       .reduce((total, product) => total + product.price, 0)
-  //       .toFixed(2);
-
-  //     const totalFee = (totalValuePerProducer * transactionFee).toFixed(2);
-
-  //     result.push({
-  //       // eslint-disable-next-line no-underscore-dangle
-  //       seller_id: products[0].producer_id.seller_id,
-  //       percentage: Math.floor(
-  //         ((totalValuePerProducer - totalFee) / totals) * 100,
-  //       ),
-  //       liable: true,
-  //       charge_processing_fee: true,
-  //     });
-  //   });
-
-  //   const totalProducersPercentage = result
-  //     .reduce((acc, recipient) => acc + parseFloat(recipient.percentage), 0);
-
-  //   result.push({
-  //     ...defaultSeller,
-  //     percentage: 100 - totalProducersPercentage,
-  //   });
-
-  //   return result;
-  // };
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const [transaction, setTransaction] = useState({
     marketplace_fee: 0.1,
@@ -124,24 +78,49 @@ const Checkout = () => {
     setTransactionItems();
   }, [totalCartPrice, cart]);
 
-  useEffect(() => {
-    console.log(process.env);
-  }, []);
+  const validateForm = () => {
+    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi;
+    const nameRegex = /^[a-z ,.'-]+$/i;
+
+    if (transaction.payer.name === '' || transaction.payer.surname === '' || transaction.payer.email === '' || transaction.payer.phone.area_code === '' || transaction.payer.phone.number === '' || transaction.payer.identification.number === '' || transaction.payer.address.uf === '' || transaction.payer.address.city === '' || transaction.payer.address.street_number === '' || transaction.payer.address.neighborhood === '' || transaction.payer.address.street_name === '') {
+      setErrorMessage('Preencha todos os campos*');
+      return false;
+    }
+
+    if (!nameRegex.test(transaction.payer.name)) {
+      setErrorMessage('Preencha um nome válido*');
+      return false;
+    }
+
+    if (!emailRegex.test(transaction.payer.email)) {
+      setErrorMessage('Preencha um email válido*');
+      return false;
+    }
+
+    if (transaction.payer.phone.number.length < 8) {
+      setErrorMessage('Preencha um telefone válido*');
+      return false;
+    }
+
+    return true;
+  };
 
   return (
     <Layout>
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
         { cart.length ? (
-          <GridItem rowSpan={11} colSpan={1} py={8} px={16}>
+          <GridItem rowSpan={11} py={8} px={16}>
             <Form
               setShippingProperties={setShippingProperties}
               transaction={transaction}
               setTransaction={setTransaction}
               mercadopago={mercadopago}
+              validateForm={validateForm}
             />
+            {errorMessage && <Text mt={2} textAlign="center" fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }}>{errorMessage}</Text>}
           </GridItem>
         ) : false}
-        <GridItem rowSpan={11} colSpan={1} py={8} px={16}>
+        <GridItem rowSpan={11} py={8} px={16}>
           <Text
             pb={1}
             fontWeight={600}
@@ -158,7 +137,7 @@ const Checkout = () => {
             fontSize="xs"
             fontWeight={400}
           >
-            Confira as texas de entrega com o vendedor antes de finalizar a compra*
+            Confira as taxas de entrega com o vendedor antes de finalizar a compra*
           </Text>
         </GridItem>
       </Grid>

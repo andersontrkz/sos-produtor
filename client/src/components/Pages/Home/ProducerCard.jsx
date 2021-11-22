@@ -68,10 +68,15 @@ const ProducerCard = ({
           </GridItem>
           )}
         </Grid>
-        {isSevenDaysDifference() && (
-        <Badge fontSize="xs" colorScheme="linkedin" maxW="max-content" px={2}>
-          Novo
-        </Badge>
+        {isSevenDaysDifference() ? (
+          <Badge fontSize="xs" colorScheme="linkedin" maxW="max-content" px={2}>
+            Novo
+          </Badge>
+        ) : (
+          <>
+            <Badge fontSize="xs" colorScheme="linkedin" maxW="max-content" px={2} />
+            <Badge fontSize="xs" colorScheme="linkedin" maxW="max-content" px={2} />
+          </>
         )}
       </Flex>
     </Flex>
