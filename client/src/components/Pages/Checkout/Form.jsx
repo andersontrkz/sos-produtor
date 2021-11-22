@@ -254,10 +254,21 @@ const Form = ({
         </Flex>
       </GridItem>
       <GridItem colSpan={12}>
-        <Button onClick={generateTransactionToken}>Modal</Button>
+        <Button
+          w="full"
+          bg="var(--primary-color)"
+          color="var(--white-color)"
+          transition=".9s"
+          _hover={{
+            backgroundColor: 'var(--quaternary-color)',
+          }}
+          onClick={generateTransactionToken}
+        >
+          Finalizar Compra
+        </Button>
         { preferenceId && (
         <MercadoPagoCheckout
-          publicKey={process.env.MERCADOPAGO_PUBLIC_KEY}
+          publicKey={process.env.REACT_APP_MERCADOPAGO_PUBLIC_KEY}
           preferenceId={preferenceId}
         />
         )}

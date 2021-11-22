@@ -62,7 +62,7 @@ const Checkout = () => {
   // };
 
   const [transaction, setTransaction] = useState({
-    marketplace_fee: 2.56,
+    marketplace_fee: 0.1,
     items: [],
     payer: {
       name: '',
@@ -86,14 +86,14 @@ const Checkout = () => {
       },
     },
     back_urls: {
-      success: 'https://www.success.com',
-      failure: 'http://www.failure.com',
-      pending: 'http://www.pending.com',
+      success: process.env.REACT_APP_PUBLIC_URL_SUCCESS,
+      failure: process.env.REACT_APP_PUBLIC_URL_SUCCESS,
+      pending: process.env.REACT_APP_PUBLIC_URL_SUCCESS,
     },
     auto_return: 'approved',
   });
 
-  const mercadopago = useMercadopago.v2('TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0', {
+  const mercadopago = useMercadopago.v2(process.env.REACT_APP_MERCADOPAGO_PUBLIC_KEY, {
     locale: 'pt-BR',
   });
 
@@ -124,6 +124,10 @@ const Checkout = () => {
     setTransactionItems();
   }, [totalCartPrice, cart]);
 
+  useEffect(() => {
+    console.log(process.env);
+  }, []);
+
   return (
     <Layout>
       <Grid templateColumns="repeat(2, 1fr)" gap={4}>
@@ -150,6 +154,12 @@ const Checkout = () => {
             {`Meu Carrinho (${totalCartQuantity})`}
           </Text>
           <Cart />
+          <Text
+            fontSize="xs"
+            fontWeight={400}
+          >
+            Confira as texas de entrega com o vendedor antes de finalizar a compra*
+          </Text>
         </GridItem>
       </Grid>
     </Layout>
