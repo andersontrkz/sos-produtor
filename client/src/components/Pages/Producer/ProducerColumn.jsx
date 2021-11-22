@@ -53,7 +53,7 @@ const Producer = ({
               <BsFillGeoAltFill style={{ marginRight: '4px' }} />
               Localização
             </Text>
-            <Text>{`Aprox. ${calculateGeolocationDistance(geolocation.lat, geolocation.lng, location.lat, location.lng)} Km do seu ponto atual.`}</Text>
+            <Text>{`Aprox. ${calculateGeolocationDistance(geolocation.lat, geolocation.lng, location.lat, location.lng)} Km de distância da sua localização atual.`}</Text>
           </Box>
         ) }
         {location && (
@@ -62,7 +62,7 @@ const Producer = ({
               <SiOpenstreetmap style={{ marginRight: '4px' }} />
               Endereço
             </Text>
-            <Text>{`${location.street}, ${location.number}`}</Text>
+            <Text>{`${location.street}, ${location.number !== undefined ? location.number : ''} `}</Text>
             <Text>{`Bairro ${location.neighborhood}`}</Text>
             <Text>{`${location.city}, ${location.uf} - BR`}</Text>
           </Box>
