@@ -1,6 +1,8 @@
 # SOS Produtor - Marketplace
 
-Este projeto, tem como desafio a implementação de uma plataforma de marketplace, com foco na venda de alimentos naturais e orgânicos, diretamente do produtor.
+Este projeto, tem como desafio a implementação de uma plataforma de marketplace, com foco na comercialização de produtos naturais e orgânicos, diretamente do produtor.
+
+Dentro da plataforma, o produtor pode compartilhar seu portfolio de produtos. Assim que preencher seus dados pessoais e dados de endereço, assim como seu token do mercadopago, poderá usufruir de todos os recursos da plataforma e ser encontrado por pessoas próximas que tenham interesse em seus produtos.
 
 
 ## Recursos
@@ -88,7 +90,11 @@ Este projeto, tem como desafio a implementação de uma plataforma de marketplac
 ## API de Pagamentos
 
 **Avisos Importantes:**
+- Assim como o marketplace, para utilizar a API de pagamentos, o produtor precisa estar vinculado com seu token à plataforma. Por isso, apesar de não ser uma prática de mercado, para evitar erros e conflitos, será disponibilizado o token do mercadopago: TG-619a845da954ac001bf766c0-1023266420. Que pode ser adicionado/vinculdado à qualquer usuário criado.
+
 - Utilize a guia anônima do navegador para testar a api de pagamentos e evitar conflitos com a conta pessoal do Mercadopago.
+
+- NÃO utilize sua conta pessoal do mercadopago, nem seus dados pessoais, para testar a aplicação. Utilize apenas os dados que serão disponibilizados a seguir para os devidos testes, quando necessário.
 
 - Apesar de não ser uma prática de mercado, será compartilhada a conta temporária de usuário teste do mercadopago. À qualquer momento, ela pode ser utilizada, para procedimentos relacionados a api: usuario (test_user_26384147@testuser.com) e senha (qatest863);
 
@@ -97,7 +103,6 @@ Este projeto, tem como desafio a implementação de uma plataforma de marketplac
 - Ao efetuar um pagamento, utilize um cpf aleatório que pode ser gerado em [Gerador de cpf](https://www.4devs.com.br/gerador_de_cpf);
 
 - Toda operação de compra no marketplace, pode ser visualizada em [Webhook](https://webhook.site/#!/3c638d4a-c6e9-4096-bb12-7cf4efa9d47b/3451fef7-8509-4204-b848-f79ce5b84944/1);
-
 
 
 ## .env
