@@ -6,13 +6,11 @@ const producer = new Schema({
   name: String,
   image: String,
   email: String,
-  cost: String,
-  rate: Number,
   location: Object,
-  resources: Object,
   seller_id: String,
-  benefits: Object,
+  phone: Object,
   password: String,
+  start_date: String,
 });
 
 module.exports = mongoose.model('Producer', producer);

@@ -27,7 +27,7 @@ router.delete('/:id', async (req, res) => {
   return res.status(200).json(producer);
 });
 
-router.put('/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
   const producer = await update(req.params, req.body);
 
   return res.status(200).json(producer);

@@ -5,8 +5,6 @@ require('dotenv');
 const Producer = require('../models/producer');
 const Product = require('../models/product');
 
-const { JWT_SECRET } = process.env;
-
 const getAll = async () => {
   try {
     const producers = await Producer.find();
@@ -31,17 +29,13 @@ const getById = async ({ id }) => {
 };
 
 const create = async ({
-  name, image, cost, rate, location, resources, seller_id, benefits, password, email,
+  name, password, email, phone, image, seller_id, location, start_date,
 }) => {
-  const encrypt = JWT.sign(
-    {
-      password,
-    },
-    JWT_SECRET,
-  );
+  const encrypt = JWT.sign(password, process.env.JWT_SECRET);
+
   try {
     const newProducer = new Producer({
-      name, image, cost, rate, location, resources, seller_id, benefits, password: encrypt, email,
+      name, email, phone, image, seller_id, password: encrypt, location, start_date,
     });
 
     const producer = await newProducer.save();
@@ -68,14 +62,17 @@ const remove = async ({ id }) => {
 };
 
 const update = async ({ id }, {
-  name, image, cost, rate, location, resources, seller_id, benefits, password, email,
+  name, image, seller_id, location, phone,
 }) => {
   try {
+    // eslint-disable-next-line no-param-reassign
+    if (location) delete location.password;
+
     const producer = await Producer.findById(id);
     if (!producer) return { code: 404, message: 'Not found. Try again.' };
 
     const updatedProducer = await Producer.findOneAndUpdate({ _id: id }, {
-      name, image, cost, rate, location, resources, seller_id, benefits, password, email,
+      name, image, phone, location, seller_id,
     }, { new: true });
 
     return updatedProducer;
