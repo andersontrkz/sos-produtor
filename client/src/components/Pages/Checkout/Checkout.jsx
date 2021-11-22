@@ -137,7 +137,7 @@ const Checkout = () => {
             fontSize="xs"
             fontWeight={400}
           >
-            Confira as texas de entrega com o vendedor antes de finalizar a compra*
+            Confira as taxas de entrega com o vendedor antes de finalizar a compra*
           </Text>
         </GridItem>
       </Grid>
