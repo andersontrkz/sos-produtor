@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal, Button, ModalOverlay, ModalContent, ModalHeader, RadioGroup, Stack,
-  ModalBody, ModalFooter, Grid, GridItem, Input, ModalCloseButton, Radio,
+  ModalBody, ModalFooter, Grid, GridItem, Input, ModalCloseButton, Radio, Text,
 } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postProductAction } from '../../../store/modules/shop/actions';
@@ -10,6 +10,7 @@ import { postProductAction } from '../../../store/modules/shop/actions';
 const ProductModal = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const { login } = useSelector((state) => state.shop);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const [product, setProduct] = useState({
     producer_id: login._id,
@@ -37,10 +38,28 @@ const ProductModal = ({ isOpen, onClose }) => {
     setProduct({ ...product, [key]: value });
   };
 
+  const validateForm = () => {
+    const priceRegex = /^[\d,.?!]+$/;
+
+    if (product.name === '' || product.price === '' || product.amount === '' || product.unit === '') {
+      setErrorMessage('Preencha todos os campos obrigatórios*');
+      return false;
+    }
+
+    if (!priceRegex.test(product.price)) {
+      setErrorMessage('Preencha um preço válido*');
+      return false;
+    }
+
+    return true;
+  };
+
   const saveProduct = () => {
-    dispatch(postProductAction(product));
-    window.location.reload();
-    onClose();
+    if (validateForm()) {
+      dispatch(postProductAction(product));
+      window.location.reload();
+      onClose();
+    }
   };
 
   return (
@@ -61,15 +80,15 @@ const ProductModal = ({ isOpen, onClose }) => {
             </GridItem>
             <GridItem colSpan={4}>
               Preço
-              <Input id="price" value={product.price} placeholder="Ex: 10.80" onChange={({ target }) => handleInput('price', target.value)} />
+              <Input id="price" type="number" value={product.price} placeholder="Ex: 10.80" onChange={({ target }) => handleInput('price', target.value)} />
             </GridItem>
             <GridItem colSpan={4}>
               Quantidade
-              <Input id="amount" value={product.amount} placeholder="Ex: 500, 1" onChange={({ target }) => handleInput('amount', target.value)} />
+              <Input id="amount" type="number" value={product.amount} placeholder="Ex: 500, 1" onChange={({ target }) => handleInput('amount', target.value)} />
             </GridItem>
             <GridItem colSpan={4}>
               Unidade
-              <Input id="unit" value={product.unit} placeholder="Ex: g, KG, UN" onChange={({ target }) => handleInput('unit', target.value)} />
+              <Input id="unit" maxLength={2} value={product.unit} placeholder="Ex: g, KG, UN" onChange={({ target }) => handleInput('unit', target.value)} />
             </GridItem>
             <GridItem colSpan={3}>
               <RadioGroup id="free_delivery" value={product.free_delivery} onChange={(e) => handleInput('free_delivery', e)}>
@@ -79,6 +98,9 @@ const ProductModal = ({ isOpen, onClose }) => {
                   <Radio value={false}>Não</Radio>
                 </Stack>
               </RadioGroup>
+            </GridItem>
+            <GridItem colSpan={9}>
+              {errorMessage && <Text textAlign="center" fontSize="xs" cursor="pointer" transition=".9s" _hover={{ color: 'var(--quaternary-color)' }}>{errorMessage}</Text>}
             </GridItem>
           </Grid>
         </ModalBody>

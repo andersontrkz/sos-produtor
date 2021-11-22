@@ -2,7 +2,7 @@ import produce from 'immer';
 
 import types from './types';
 import { localStorageCart, localStorageCartPrice, localStorageCartQuantity } from '../../../localStorage/cart';
-import sessionStorageLogin from '../../../localStorage/login';
+import localStorageLogin from '../../../localStorage/login';
 
 const INITIAL_STATE = {
   customer: {},
@@ -19,7 +19,7 @@ const INITIAL_STATE = {
     percentage: 10,
     liable: true,
   },
-  login: sessionStorageLogin(),
+  login: localStorageLogin(),
 };
 
 const changeProductCartQuantity = (id, quantity, cart) => cart.map((product) => {
@@ -118,7 +118,7 @@ const shop = (state = INITIAL_STATE, action) => {
       return produce(state, (draft) => {
         if (action.login._id) {
           draft.login = action.login;
-          sessionStorage.setItem('SOS_PRODUTOR_LOGIN', JSON.stringify(draft.login));
+          localStorage.setItem('SOS_PRODUTOR_LOGIN', JSON.stringify(draft.login));
         }
       });
     }

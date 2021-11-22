@@ -1,9 +1,9 @@
-const sessionStorageLogin = () => {
-  const login = JSON.parse(sessionStorage.getItem('SOS_PRODUTOR_LOGIN'));
+const localStorageLogin = () => {
+  const login = JSON.parse(localStorage.getItem('SOS_PRODUTOR_LOGIN'));
   if (login) {
     return login;
   }
   return {};
 };
 
-export default sessionStorageLogin;
+export default localStorageLogin;
