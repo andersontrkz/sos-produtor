@@ -26,6 +26,8 @@ const create = async ({
   name, image, price, amount, unit, producer_id, free_delivery,
 }) => {
   try {
+    // eslint-disable-next-line no-param-reassign
+    if (image === '') image = 'https://www.inovegas.com.br/site/wp-content/uploads/2017/08/sem-foto.jpg';
     const newProduct = new Product({
       name, image, price, producer_id, free_delivery, measurement: { amount, unit },
     });
