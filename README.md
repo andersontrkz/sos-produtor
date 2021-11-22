@@ -48,7 +48,7 @@ Dentro da plataforma, o produtor pode compartilhar seu portfolio de produtos. As
 - [Express](https://expressjs.com/)
 - [MongoDB](https://www.mongodb.com/)
 - [Mongoose](https://mongoosejs.com/)
-- [Mercadopago](https://www.mercadopago.com.br/developers/en/reference)
+- [API Mercadopago](https://www.mercadopago.com.br/developers/en/reference)
 - [JWT](https://jwt.io/)
 - [Redux](https://redux.js.org/)
 - [Redux Saga](https://redux-saga.js.org/)
@@ -92,9 +92,9 @@ Dentro da plataforma, o produtor pode compartilhar seu portfolio de produtos. As
 **Avisos Importantes:**
 - Assim como o marketplace, para utilizar a API de pagamentos, o produtor precisa estar vinculado com seu token à plataforma. Por isso, apesar de não ser uma prática de mercado, para evitar erros e conflitos, será disponibilizado o token do mercadopago: TG-619a845da954ac001bf766c0-1023266420. Que pode ser adicionado/vinculdado à qualquer usuário criado.
 
-- Utilize a guia anônima do navegador para testar a api de pagamentos e evitar conflitos com a conta pessoal do Mercadopago.
-
 - NÃO utilize sua conta pessoal do mercadopago, nem seus dados pessoais, para testar a aplicação. Utilize apenas os dados que serão disponibilizados a seguir para os devidos testes, quando necessário.
+
+- Também utilize a guia anônima do navegador para testar a api de pagamentos e evitar conflitos com a sua conta pessoal do Mercadopago.
 
 - Apesar de não ser uma prática de mercado, será compartilhada a conta temporária de usuário teste do mercadopago. À qualquer momento, ela pode ser utilizada, para procedimentos relacionados a api: usuario (test_user_26384147@testuser.com) e senha (qatest863);
 
