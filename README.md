@@ -92,11 +92,11 @@ Este projeto, tem como desafio a implementação de uma plataforma de marketplac
 
 - Apesar de não ser uma prática de mercado, será compartilhada a conta temporária de usuário teste do mercadopago. À qualquer momento, ela pode ser utilizada, para procedimentos relacionados a api: usuario (test_user_26384147@testuser.com) e senha (qatest863);
 
-- Ao efetuar um pagamento, utilize os dados bancários presentes em https://www.mercadopago.com.br/developers/en/guides/online-payments/checkout-pro/test-integration.
+- Ao efetuar um pagamento, utilize os dados bancários presentes em [Test your integration](https://www.mercadopago.com.br/developers/en/guides/online-payments/checkout-pro/test-integration);
 
-- Ao efetuar um pagamento, utilize um cpf aleatório que pode ser gerado em https://www.4devs.com.br/gerador_de_cpf.
+- Ao efetuar um pagamento, utilize um cpf aleatório que pode ser gerado em [Gerador de cpf](https://www.4devs.com.br/gerador_de_cpf);
 
-- Toda operação de compra no marketplace, pode ser visualizada no link https://webhook.site/#!/3c638d4a-c6e9-4096-bb12-7cf4efa9d47b/3451fef7-8509-4204-b848-f79ce5b84944/1.
+- Toda operação de compra no marketplace, pode ser visualizada em [Webhook](https://webhook.site/#!/3c638d4a-c6e9-4096-bb12-7cf4efa9d47b/3451fef7-8509-4204-b848-f79ce5b84944/1);
 
 
 
@@ -104,16 +104,16 @@ Este projeto, tem como desafio a implementação de uma plataforma de marketplac
 - Apesar de não ser uma prática de mercado, para possibilitar que o projeto rode sem erros e conflitos, será compartilhado o arquivo .env, utilizado no ambiente de desenvolvimento.
 
 **API:**
-PORT=3001
-MERCADOPAGO_ACCESS_TOKEN=TEST-4723453340686245-111616-bec8e8e757409aa44be07ee404f52af5-190290972
-JWT_SECRET=SOSPRODUTOR
+- PORT=3001
+- MERCADOPAGO_ACCESS_TOKEN=TEST-4723453340686245-111616-bec8e8e757409aa44be07ee404f52af5-190290972
+- JWT_SECRET=SOSPRODUTOR
 
 **CLIENT:**
-REACT_APP_MERCADOPAGO_PUBLIC_KEY=TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0
-REACT_APP_MERCADOPAGO_APP_ID=4723453340686245
-REACT_APP_MERCADOPAGO_RANDOM_ID=SOSPRODUTOR
-REACT_APP_MERCADOPAGO_SUCCESS_URI=https://localhost:3000/success
-REACT_APP_PUBLIC_URL_SUCCESS=https://localhost:3000/success
+- REACT_APP_MERCADOPAGO_PUBLIC_KEY=TEST-0cea4c24-eee4-4f4d-a6cd-1bf68d25f9d0
+- REACT_APP_MERCADOPAGO_APP_ID=4723453340686245
+- REACT_APP_MERCADOPAGO_RANDOM_ID=SOSPRODUTOR
+- REACT_APP_MERCADOPAGO_SUCCESS_URI=https://localhost:3000/success
+- REACT_APP_PUBLIC_URL_SUCCESS=https://localhost:3000/success
 
 ## Licença
 
