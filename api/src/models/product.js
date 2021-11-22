@@ -12,6 +12,7 @@ const product = new Schema({
   price: Number,
   rate: Number,
   measurement: Object,
+  benefits: Object,
 });
 
 module.exports = mongoose.model('Product', product);

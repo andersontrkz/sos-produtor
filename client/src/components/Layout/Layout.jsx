@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex flexDir="column" h="100vh">
+    <Flex flexDir="column" h="100vh" bg="var(--main-background-color)">
       <Header onOpen={onOpen} />
       {children}
       <Sidebar isOpen={isOpen} onOpen={onOpen} onClose={onClose} />

@@ -1,351 +1,150 @@
 [
   {
-    "name": "Seu Zé",
-    "image": "https://previews.123rf.com/images/bialasiewicz/bialasiewicz1606/bialasiewicz160602342/58998652-older-man-concentraiting-on-watering-plants-in-a-garden-by-his-green-water-can.jpg",
-    "cost": "$$$",
-    "rate": 1,
+    "name": "João Carneiro",
+    "image": "https://image.freepik.com/fotos-gratis/perto-do-velho-fazendeiro-segurando-uma-cesta-de-legumes-o-homem-esta-parado-no-jardim-senior-em-um-avental-preto_1157-39733.jpg",
+    "cost": 5,
+    "rate": 4,
     "location": {
-      "lat": -23.561684,
-      "lng": -46.625378
+      "lat": -25.4110303,
+      "lng": -51.5862526
+    },
+    "benefits": {
+      "discount": false,
+      "free_delivery": false,
+      "new": true,
+      "offer": false
     },
     "products": [
       {
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
+        "name": "Alface Crespa",
+        "image": "https://images.squarespace-cdn.com/content/v1/5b8edfa12714e508f756f481/1543944726778-3R28J0BST06GRZCOF7UR/alface-crespa-verde-hidropo%CC%82nica.png?format=1000w",
+        "price": 4.90,
         "rate": 4.5,
         "measurement": {
-          "amount": "500",
-          "unit": "g"
+          "amount": "1",
+          "unit": "UN"
+        },
+        "benefits": {
+          "discount": "-20%",
+          "free_delivery": false,
+          "new": false
+        }
+      },{
+        "name": "Tomate Carmem",
+        "image": "https://imagensemoldes.com.br/wp-content/uploads/2020/07/Pizza-Tomate-PNG-1280x720.png",
+        "price": 11.80,
+        "rate": 2,
+        "measurement": {
+          "amount": "1",
+          "unit": "Kg"
+        },
+        "benefits": {
+          "discount": "-30%",
+          "free_delivery": false,
+          "new": false
         }
       },{
         "name": "Morango",
         "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
+        "price": 8.60,
+        "rate": 3,
         "measurement": {
           "amount": "500",
           "unit": "g"
+        },
+        "benefits": {
+          "discount": false,
+          "free_delivery": false,
+          "new": false
         }
       },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
+        "name": "Mel Floresta Verde",
+        "image": "https://apiariosfloresta.com.br/wp-content/uploads/2020/07/mel-900g.png",
         "price": 17.8,
-        "rate": 4.5,
+        "rate": 5,
         "measurement": {
-          "amount": "500",
+          "amount": "990",
           "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
+        },
+        "benefits": {
+          "discount": false,
+          "free_delivery": true,
+          "new": true
         }
       }
     ]
   },
   {
-    "name": "Dona Maria",
-    "image": "https://previews.123rf.com/images/alinatroeva/alinatroeva2007/alinatroeva200700945/151288783-mature-elderly-woman-watering-plants-with-water-hose-farming-gardening-agriculture-old-age-and-peopl.jpg",
-    "cost": "$$",
-    "rate": 2,
+    "name": "Sebastião Dalí",
+    "image": "https://www.dtnpf.com/mydtn-public-core-portlet/servlet/GetStoredImage?category=CMS&symbolicName=firstgen-by-joel-reichenberger.jpg",
+    "cost": 5,
+    "rate": 4,
     "location": {
-      "lat": -23.57110562,
-      "lng": -46.58418083
+      "lat": -25.5110303,
+      "lng": -51.4862526
+    },
+    "benefits": {
+      "discount": false,
+      "free_delivery": false,
+      "new": true,
+      "offer": false
     },
     "products": [
       {
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
+        "name": "Queijo Fazenda - Damasco e Avelã",
+        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_de_damasco_e_nozes_37_1_20190207211614.png",
+        "price": 30,
         "rate": 4.5,
         "measurement": {
-          "amount": "500",
+          "amount": "700",
           "unit": "g"
+        },
+        "benefits": {
+          "discount": "-5%",
+          "free_delivery": false,
+          "new": true
         }
       },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
+        "name": "Queijo Fazenda - Cheddar",
+        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_de_cheddar_35_1_20190207211600.png",
+        "price": 30,
+        "rate": 2,
         "measurement": {
-          "amount": "500",
+          "amount": "700",
           "unit": "g"
+        },
+        "benefits": {
+          "discount": "-5%",
+          "free_delivery": false,
+          "new": false
         }
       },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
+        "name": "Queijo Fzenda - Tradicional",
+        "image": "https://images.tcdn.com.br/img/img_prod/680553/queijo_trufado_tradicional_29_1_20190207210024.png",
+        "price": 25,
+        "rate": 3,
         "measurement": {
           "amount": "500",
           "unit": "g"
+        },
+        "benefits": {
+          "discount": "-10%",
+          "free_delivery": false,
+          "new": false
         }
       },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
+        "name": "Doce de Leite - Tradicional",
+        "image": "http://2.bp.blogspot.com/-sCD24ONKIrA/UfBuGI09rGI/AAAAAAAAABc/s4bAj914ofA/s1600/linha-pastosos.png",
+        "price": 20,
+        "rate": 5,
         "measurement": {
-          "amount": "500",
+          "amount": "680",
           "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      }
-    ]
-  },
-  {
-    "name": "Dona Maria",
-    "image": "https://previews.123rf.com/images/alinatroeva/alinatroeva2007/alinatroeva200700945/151288783-mature-elderly-woman-watering-plants-with-water-hose-farming-gardening-agriculture-old-age-and-peopl.jpg",
-    "cost": "$$",
-    "rate": 2,
-    "location": {
-      "lat": -23.57110562,
-      "lng": -46.58418083
-    },
-    "products": [
-      {
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      }
-    ]
-  },{
-    "name": "Dona Maria",
-    "image": "https://previews.123rf.com/images/alinatroeva/alinatroeva2007/alinatroeva200700945/151288783-mature-elderly-woman-watering-plants-with-water-hose-farming-gardening-agriculture-old-age-and-peopl.jpg",
-    "cost": "$$",
-    "rate": 2,
-    "location": {
-      "lat": -23.57110562,
-      "lng": -39.58418083
-    },
-    "products": [
-      {
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      }
-    ]
-  },{
-    "name": "Seu Pedro",
-    "image": "https://previews.123rf.com/images/alinatroeva/alinatroeva2007/alinatroeva200700945/151288783-mature-elderly-woman-watering-plants-with-water-hose-farming-gardening-agriculture-old-age-and-peopl.jpg",
-    "cost": "$$",
-    "rate": 2,
-    "location": {
-      "lat": -33.57110562,
-      "lng": -46.58418083
-    },
-    "products": [
-      {
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
-        }
-      },{
-        "name": "Morango",
-        "image": "https://static.libertyprim.com/files/familles/fraise-large.jpg?1569271765",
-        "price": 17.8,
-        "rate": 4.5,
-        "measurement": {
-          "amount": "500",
-          "unit": "g"
+        },
+        "benefits": {
+          "discount": false,
+          "free_delivery": false,
+          "new": false
         }
       }
     ]

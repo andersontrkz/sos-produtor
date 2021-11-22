@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
+import { useSelector } from 'react-redux';
 
 import MapMarker from './MapMarker';
+import ClientMapMarker from './ClientMapMarker';
+import { getGeolocation } from '../../../utils/geolocation';
 
-const producers = [{
-  id: '1', name: 'Juca', price: '$$$$', rate: '4.7', range: '2,9 Km', image: 'https://www.pccmarkets.com/wp-content/uploads/2018/05/steve-suzi-and-workers-1600.jpg',
-}];
+const Map = ({ producers }) => {
+  const [geolocation, setGeolocation] = useState(false);
 
-const Map = () => (
-  <GoogleMapReact
-    bootstrapURLKeys={{ key: 'AIzaSyCWBxlNpEtAk1yi9lgZ5WeW89b5pdva0Ek' }}
-    center={{ lat: -23.561684, lng: -46.625378 }}
-    defaultZoom={15}
-  >
-    {producers.map((producer) => <MapMarker producer={producer} />)}
-  </GoogleMapReact>
-);
+  const { mapCenter } = useSelector((state) => state.shop);
+
+  useEffect(() => {
+    getGeolocation(setGeolocation);
+  }, []);
+
+  return (
+    <GoogleMapReact
+      bootstrapURLKeys={{ key: 'AIzaSyCWBxlNpEtAk1yi9lgZ5WeW89b5pdva0Ek' }}
+      center={mapCenter}
+      defaultZoom={15}
+    >
+      {producers.map((producer) => (
+        <MapMarker producer={producer} lat={producer.location.lat} lng={producer.location.lng} />
+      ))}
+      {geolocation
+      && <ClientMapMarker lat={geolocation.lat} lng={geolocation.lng} />}
+    </GoogleMapReact>
+  );
+};
+
+Map.propTypes = {
+  producers: PropTypes.string.isRequired,
+};
 
 export default Map;
