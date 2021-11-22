@@ -25,11 +25,13 @@ Este projeto, tem como desafio a implementação de uma plataforma de marketplac
 
     - [X]  Implementa compra de produtos;
 
-    - [X]  Implementa criptografia de senha com jwt;
+    - [X]  Implementa persistência de dados em localStorage;
 
-    - [X]  Implementa gerencialmento global de estado com redux;
+    - [X]  Implementa criptografia de senha com JWT;
 
-    - [X]  Implementa api de pagamentos com mercadopago;
+    - [X]  Implementa gerenciamento global de estado com Redux;
+
+    - [X]  Implementa api de pagamentos com Mercadopago;
 
 
 ## Tecnologias
@@ -88,7 +90,7 @@ Este projeto, tem como desafio a implementação de uma plataforma de marketplac
 **Avisos Importantes:**
 - Utilize a guia anônima do navegador para testar a api de pagamentos e evitar conflitos com a conta pessoal do Mercadopago.
 
-- À qualquer momento, pode ser utilizada a conta do mercadopago de teste com usuario (test_user_26384147@testuser.com) e senha (qatest863);
+- Apesar de não ser uma prática de mercado, será compartilhada a conta temporária de usuário teste do mercadopago. À qualquer momento, ela pode ser utilizada, para procedimentos relacionados a api: usuario (test_user_26384147@testuser.com) e senha (qatest863);
 
 - Ao efetuar um pagamento, utilize os dados bancários presentes em https://www.mercadopago.com.br/developers/en/guides/online-payments/checkout-pro/test-integration.
 
